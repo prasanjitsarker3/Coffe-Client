@@ -16,10 +16,11 @@ import Link from "next/link";
 import { ThemeSwitcher } from "../Lib/ThemeSwitcher";
 import { ShoppingBag } from "lucide-react";
 import useAuthUser from "../Lib/authUser";
-import { useAppDispatch } from "../Redux/Provider/hook";
+import { useAppDispatch, useAppSelector } from "../Redux/Provider/hook";
 import { logOut } from "../Redux/authSlice";
 import { logoutUser } from "../Server/logoutUser";
 import { useRouter } from "next/navigation";
+import { RootState } from "../Redux/store";
 
 const NavbarSec = () => {
   const router = useRouter();
@@ -27,6 +28,8 @@ const NavbarSec = () => {
   const [isInvisible, setIsInvisible] = React.useState(false);
   const user = useAuthUser();
   const dispatch = useAppDispatch();
+  const items = useAppSelector((state: RootState) => state.cart.items);
+  console.log("Length", items.length);
 
   const routesMap: Record<string, string> = {
     USER: "/dashboard",
@@ -75,15 +78,17 @@ const NavbarSec = () => {
             <Link href="/about">About</Link>
           </NavbarItem>
           <NavbarItem className=" primary font-semibold">
-            <Badge
-              color="danger"
-              size="sm"
-              content={10}
-              isInvisible={isInvisible}
-              shape="circle"
-            >
-              <ShoppingBag size={20} />
-            </Badge>
+            <Link href={"/product"}>
+              <Badge
+                color="danger"
+                size="sm"
+                content={(items && items.length) || 0}
+                isInvisible={isInvisible}
+                shape="circle"
+              >
+                <ShoppingBag size={20} />
+              </Badge>
+            </Link>
           </NavbarItem>
           <NavbarItem isActive className=" primary font-semibold">
             {user && <Link href={routesMap[user?.role]}>Dashboard</Link>}
@@ -102,8 +107,7 @@ const NavbarSec = () => {
             ) : (
               <Button
                 onClick={handleLogoutUser}
-                className=" text-white border border-red-600"
-                color="danger"
+                className=" text-white border border-red-500 bg-red-400"
                 variant="flat"
               >
                 Sign Out

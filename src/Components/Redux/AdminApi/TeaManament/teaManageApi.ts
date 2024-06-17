@@ -22,6 +22,18 @@ const teaManageApi = baseApi.injectEndpoints({
       },
       providesTags: ["product"],
     }),
+    getCategoryProduct: builder.query({
+      query: ({ categorySingleId, args }) => {
+        console.log("Args", { categorySingleId, args });
+        return {
+          url: `/product/category/${categorySingleId}`,
+          method: "GET",
+          params: args,
+        };
+      },
+      providesTags: ["product"],
+    }),
+
     singleProduct: builder.query({
       query: (id: string) => ({
         url: `/product/${id}`,
@@ -56,4 +68,5 @@ export const {
   useDeleteSingleProductMutation,
   useSingleProductQuery,
   useUpdateSingleProductMutation,
+  useGetCategoryProductQuery,
 } = teaManageApi;

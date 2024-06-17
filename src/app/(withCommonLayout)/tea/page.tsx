@@ -1,9 +1,10 @@
+import ProductShow from "@/Components/pages/ProductShow";
 import React from "react";
 
 const TeaPage = () => {
   return (
     <div>
-      <h1>Tea page</h1>
+      <ProductShow />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import Banner from "@/Components/pages/Banner";
 import ProductCategory from "@/Components/pages/ProductCategory";
 import ProductShow from "@/Components/pages/ProductShow";
+import TopProduct from "@/Components/pages/UsingPage/TopProduct";
 import React from "react";
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
       <Banner />
       <ProductCategory />
       <ProductShow />
+      <TopProduct />
     </div>
   );
 };

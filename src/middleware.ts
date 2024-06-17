@@ -31,7 +31,7 @@ export function middleware(request: NextRequest) {
   const role = decodedData?.role;
   if (role && roleBasePrivateRoute[role as Role]) {
     const routes = roleBasePrivateRoute[role as Role];
-    console.log(routes);
+    // console.log(routes);
     if (routes.some((route) => pathname.match(route))) {
       return NextResponse.next();
     } else {
