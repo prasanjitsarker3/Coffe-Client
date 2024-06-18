@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 import { baseApi } from "./baseApi";
 import authReducer from "./authSlice";
 import cartReducer from "./cartSlice";
+import checkoutReducer from "./checkoutSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -31,6 +32,7 @@ const store = configureStore({
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
     cart: persistedCartReducer,
+    checkout: checkoutReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
