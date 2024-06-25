@@ -5,3 +5,9 @@
 .primary {
   color: #54aeff;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #00cd71 !important;
+  font-weight: 700;
+}

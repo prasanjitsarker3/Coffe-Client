@@ -21,6 +21,8 @@ import {
 } from "lucide-react";
 import SideProductShow from "./UsingPage/SideProductShow";
 import { useGetAllCategoryQuery } from "../Redux/AdminApi/TeaCategory/teaCategoryApi";
+import Link from "next/link";
+import DiscountProduct from "./UsingPage/DiscountProduct";
 
 const ProductShow = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -69,6 +71,7 @@ const ProductShow = () => {
     <div className="flex gap-6 w-full py-12 md:px-24 px-6">
       <div className="md:w-[30%] w-full">
         <SideProductShow />
+        <DiscountProduct />
       </div>
       <div className="md:w-[70%] w-full">
         <div className="flex justify-between items-center gap-12 pb-5">
@@ -160,19 +163,21 @@ const ProductShow = () => {
                     </small>
                   </div>
                   <div className="pt-2 flex justify-between items-center">
-                    <Chip
-                      endContent={<EyeIcon size={18} />}
-                      variant="flat"
-                      color="default"
-                    >
-                      See More{" "}
-                    </Chip>
+                    <Link href={`/tea/details/${product.id}`}>
+                      <Chip
+                        endContent={<EyeIcon size={18} />}
+                        variant="flat"
+                        color="default"
+                      >
+                        See More{" "}
+                      </Chip>
+                    </Link>
                     <div className="bg-slate-300 rounded-full p-2">
                       <ShoppingCart size={15} />
                     </div>
                   </div>
                 </div>
-                <div className="absolute inset-0 border-2 border-transparent rounded-lg group-hover:border-blue-500 transition-all duration-300 ease-in-out"></div>
+                {/* <div className="absolute inset-0 border-2 border-transparent rounded-lg group-hover:border-blue-500 transition-all duration-300 ease-in-out"></div> */}
               </div>
             ))}
         </div>

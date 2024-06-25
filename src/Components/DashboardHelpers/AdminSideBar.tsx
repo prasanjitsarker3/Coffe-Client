@@ -58,10 +58,10 @@ export const AdminSidebarWrapper = () => {
                 href="/dashboard/admin/tea"
               />
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
+                isActive={pathname === "/dashboard/admin/order"}
                 title="Order Management"
                 icon={<ShoppingBag />}
-                href="/dashboard/tea"
+                href="/dashboard/admin/order"
               />
               <SidebarItem
                 isActive={pathname === "/dashboard/payments"}

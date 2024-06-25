@@ -9,12 +9,12 @@ interface CheckoutProduct {
 
 interface CheckoutState {
   totalPrice: number;
-  product: CheckoutProduct[];
+  products: CheckoutProduct[];
 }
 
 const initialState: CheckoutState = {
   totalPrice: 0,
-  product: [],
+  products: [],
 };
 
 const checkoutSlice = createSlice({
@@ -23,11 +23,11 @@ const checkoutSlice = createSlice({
   reducers: {
     setCheckoutData: (state, action: PayloadAction<CheckoutState>) => {
       state.totalPrice = action.payload.totalPrice;
-      state.product = action.payload.product;
+      state.products = action.payload.products;
     },
     clearCheckoutData: (state) => {
       state.totalPrice = 0;
-      state.product = [];
+      state.products = [];
     },
   },
 });

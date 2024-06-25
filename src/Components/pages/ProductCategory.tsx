@@ -12,7 +12,7 @@ const ProductCategory = () => {
 
   return (
     <div className=" md:px-24 px-6 py-12">
-      <h1 className="py-5 text-center text-[#2ecc72]">
+      <h1 className="py-5 text-2xl text-center text-[#00cd71]">
         Find the Perfect Product Category That Matches Your Preferences and
         Requirements
       </h1>

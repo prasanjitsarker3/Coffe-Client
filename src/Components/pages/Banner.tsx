@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
+import { TreePalm } from "lucide-react";
 
 const Banner = () => {
   return (
@@ -12,17 +13,27 @@ const Banner = () => {
       >
         <source src="/video/19669266-hd_1280_720_25fps.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center  text-white">
-        <div className=" flex flex-col justify-start items-center text-left">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Organic Tea Company
-          </h1>
-          <p className="text-lg md:text-2xl mb-6">
-            Experience the best organic tea from around the world.
-          </p>
-          <button className=" border-2 py-2 px-5 rounded-md border-white">
-            Shop Now
-          </button>
+      <div className="absolute inset-0 bg-black bg-opacity-50  text-white">
+        <div className=" h-full flex  items-center">
+          <div className=" md:px-24 px-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#00cd71]">
+              Organic <span className=" text-[#00864a]">Tea & Coffee</span>{" "}
+              Haven
+            </h1>
+            <div>
+              <p className="text-lg md:text-2xl mb-1">
+                Experience the rich flavors and aromas of our organic tea and
+                coffee collections
+              </p>
+              <p className="text-lg md:text-2xl mb-8">
+                Handpicked and ethically sourced for the best taste.
+              </p>
+            </div>
+            <button className=" border-2 py-2 px-5 rounded-md border-white flex items-center gap-3">
+              Shop Now{" "}
+              <TreePalm size={20} className=" text-[#00cd71] font-bold" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

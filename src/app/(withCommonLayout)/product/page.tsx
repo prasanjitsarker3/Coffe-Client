@@ -11,6 +11,7 @@ import { RootState } from "@/Components/Redux/store";
 import { Button, Select, SelectItem } from "@nextui-org/react"; // Ensure SelectItem is imported
 import { Delete, Minus, Plus } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 interface Product {
@@ -37,7 +38,7 @@ interface Product {
 
 const ProductAdd = () => {
   const items = useAppSelector((state: RootState) => state.cart.items);
-  console.log("Item", items);
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { data, isLoading } = useGetAllProductQuery({});
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
@@ -45,6 +46,9 @@ const ProductAdd = () => {
     {}
   );
 
+  if (!items) {
+    router.push("/");
+  }
   useEffect(() => {
     const initialQuantities: { [key: string]: number } = {};
     items.forEach((id: any) => {
@@ -60,7 +64,7 @@ const ProductAdd = () => {
     return <div>No products available</div>;
   }
   const products: Product[] = data.data.result;
-  const productIdsInCart = items.map((item) => item.productId); // Extract product IDs from the cart items
+  const productIdsInCart = items.map((item) => item.productId);
   const reduxData = products.filter((product) =>
     productIdsInCart.includes(product.id)
   ); // Filter products based on cart product IDs
@@ -95,21 +99,22 @@ const ProductAdd = () => {
     }));
   };
   const handleCheckout = () => {
-    const userId = "sampleUserId"; // Replace with actual user ID
+    router.refresh();
     const totalPrice =
       reduxData.reduce(
         (sum, item) => sum + item.price * (quantities[item.id] || 1),
         0
       ) + 60;
-    const product = reduxData.map((item) => ({
+    const products = reduxData.map((item) => ({
       productId: item.id,
       quantity: quantities[item.id] || 1,
       size: selectedSizes[item.id] || item.size[0],
     }));
 
-    const checkoutData = { totalPrice, product };
+    const checkoutData = { totalPrice, products };
     console.log("Checkout Data:", checkoutData);
     dispatch(setCheckoutData(checkoutData));
+    router.push("/product/order");
   };
   return (
     <div className="md:px-24">

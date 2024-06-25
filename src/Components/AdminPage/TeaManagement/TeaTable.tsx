@@ -1,6 +1,10 @@
 "use client";
 
-import { useDeleteSingleProductMutation } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
+import { useGetAllCategoryQuery } from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
+import {
+  useDeleteSingleProductMutation,
+  useGetAllProductQuery,
+} from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
 import { dateFormatter } from "@/Components/Utlities/dateFormater";
 import {
   Avatar,
@@ -19,6 +23,8 @@ import {
   DropdownMenu,
   DropdownItem,
   Pagination,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import {
   DeleteIcon,
@@ -28,7 +34,7 @@ import {
   SearchIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const columns = [
@@ -45,8 +51,50 @@ type IProps = {
   data: any;
   meta: any;
 };
-const TeaTable = ({ data, meta }: IProps) => {
+const TeaTable = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isSpecial, setIsSpecial] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit] = useState(6);
+  // Implement Tea Data
+  useEffect(() => {
+    if (searchTerm.length > 0) {
+      setIsSpecial("");
+      setCategoryId("");
+    }
+  }, [searchTerm]);
+
+  const query: Record<string, any> = {
+    searchTerm,
+    page,
+    limit,
+  };
+
+  if (!searchTerm.length) {
+    if (isSpecial) query["isSpecial"] = isSpecial;
+    if (categoryId) query["categoryId"] = categoryId;
+  }
+
+  const { data: productData, isLoading } = useGetAllProductQuery(query);
+  const { data: categories, isLoading: categoryLoad } = useGetAllCategoryQuery(
+    {}
+  );
   const [deleteSingleProduct] = useDeleteSingleProductMutation();
+  // End Tea Data
+
+  if (isLoading) {
+    <h1>Loading...</h1>;
+  }
+  const data = productData?.data?.result;
+  const metaData = productData?.data?.meta;
+  const total = metaData?.total || 0;
+  const countPage = Math.ceil(total / limit);
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage); // Update page state when page changes
+  };
+
   const renderCell = useCallback((data: any, columnKey: React.Key) => {
     const cellValue = data[columnKey as any];
 
@@ -151,30 +199,48 @@ const TeaTable = ({ data, meta }: IProps) => {
 
   return (
     <div className=" py-8 px-6">
-      <div className=" flex justify-between items-center pb-3">
+      <div className=" flex justify-between items-center gap-12 pb-3">
         <Input
           isClearable
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full sm:max-w-[44%]"
           placeholder="Search by name..."
           startContent={<SearchIcon />}
         />
-        <Dropdown>
-          <DropdownTrigger>
-            <Button variant="bordered" className="capitalize">
-              Filter
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu
-            aria-label="Single selection example"
-            variant="flat"
-            disallowEmptySelection
-            selectionMode="single"
-          >
-            <DropdownItem key="text">Text</DropdownItem>
-            <DropdownItem key="number">Number</DropdownItem>
-            <DropdownItem key="date">Date</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        <Select
+          value={isSpecial}
+          onChange={(e) => setIsSpecial(e.target.value)}
+          size="sm"
+          label="Filter By Special"
+          className="max-w-xs"
+        >
+          <SelectItem value="" key={""}>
+            All
+          </SelectItem>
+          <SelectItem value="Tea" key={"Tea"}>
+            Tea
+          </SelectItem>
+          <SelectItem value="Coffee" key={"Coffee"}>
+            Coffee
+          </SelectItem>
+        </Select>
+
+        <Select
+          size="sm"
+          label="Filter By Category"
+          className="max-w-xs"
+          value={categoryId}
+          onChange={(e) => setCategoryId(e.target.value)}
+        >
+          <SelectItem value="" key={""}>
+            All
+          </SelectItem>
+          {categories?.data?.map((item: any) => (
+            <SelectItem key={item.id} value={item.id}>
+              {item.name}
+            </SelectItem>
+          ))}
+        </Select>
         <Link href={"/dashboard/admin/tea/create"}>
           <Button color="primary" endContent={<PlusIcon />}>
             Add New
@@ -206,7 +272,12 @@ const TeaTable = ({ data, meta }: IProps) => {
         </TableBody>
       </Table>
       <div className=" flex justify-center py-3">
-        <Pagination showControls total={10} initialPage={1} />
+        <Pagination
+          total={countPage}
+          page={page}
+          showControls
+          onChange={handlePageChange}
+        />
       </div>
     </div>
   );
