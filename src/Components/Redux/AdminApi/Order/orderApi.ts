@@ -11,11 +11,33 @@ const orderApi = baseApi.injectEndpoints({
       invalidatesTags: ["order"],
     }),
     getAllOrder: builder.query({
-      query: () => ({
+      query: (args: Record<string, any>) => ({
         url: "/order",
+        method: "GET",
+        params: args,
+      }),
+      providesTags: ["order"],
+    }),
+    getAllOrderDelivery: builder.query({
+      query: (args: Record<string, any>) => ({
+        url: "/order/delivery",
+        method: "GET",
+        params: args,
+      }),
+      providesTags: ["order"],
+    }),
+    getSingleOrder: builder.query({
+      query: (id: string) => ({
+        url: `/order/${id}`,
         method: "GET",
       }),
       providesTags: ["order"],
+    }),
+    getSingleOrderSendMail: builder.mutation({
+      query: (id: string) => ({
+        url: `/order/delivery/${id}`,
+        method: "PATCH",
+      }),
     }),
     cashOnPayment: builder.mutation({
       query: (data) => ({
@@ -23,13 +45,32 @@ const orderApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      // invalidatesTags: ["order"],
+      invalidatesTags: ["order"],
     }),
     onlinePayment: builder.mutation({
       query: (id: string) => ({
         url: `/payment/init/${id}`,
         method: "POST",
       }),
+      invalidatesTags: ["order"],
+    }),
+    orderStatusUpdate: builder.mutation({
+      query: (data) => {
+        console.log("Params", data);
+        return {
+          url: `/order/status/${data.id}`,
+          method: "PATCH",
+          body: data.body,
+        };
+      },
+      invalidatesTags: ["order"],
+    }),
+    deleteOrder: builder.mutation({
+      query: (id: string) => ({
+        url: `/order/delete/${id}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["order"],
     }),
   }),
 });
@@ -39,4 +80,9 @@ export const {
   useGetAllOrderQuery,
   useCashOnPaymentMutation,
   useOnlinePaymentMutation,
+  useGetSingleOrderQuery,
+  useOrderStatusUpdateMutation,
+  useGetAllOrderDeliveryQuery,
+  useGetSingleOrderSendMailMutation,
+  useDeleteOrderMutation,
 } = orderApi;

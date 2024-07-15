@@ -1,8 +1,12 @@
-import { useGetAllOrderQuery } from "@/Components/Redux/AdminApi/Order/orderApi";
+import {
+  useDeleteOrderMutation,
+  useGetAllOrderQuery,
+} from "@/Components/Redux/AdminApi/Order/orderApi";
 import { dateFormatter } from "@/Components/Utlities/dateFormater";
 import {
   Button,
   Input,
+  Pagination,
   Select,
   SelectItem,
   Table,
@@ -13,28 +17,62 @@ import {
   TableRow,
   Tooltip,
 } from "@nextui-org/react";
-import { DeleteIcon, EditIcon, SearchIcon } from "lucide-react";
-import React from "react";
+import { DeleteIcon, EditIcon, Eye, SearchIcon } from "lucide-react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import UpdateProcess from "./UpdateProcess";
+import { toast } from "sonner";
 
 const columns = [
   { name: "USER", uid: "user" },
   { name: "CONTACT", uid: "contact" },
   { name: "PRODUCT", uid: "products" },
   { name: "TOTAL AMOUNT", uid: "totalPrice" },
+  { name: "PAYMENT", uid: "paymentStatus" },
   { name: "CREATED AT", uid: "createdAt" },
   { name: "STATUS", uid: "status" },
   { name: "ACTIONS", uid: "actions" },
 ];
 
 const OrderTable = () => {
-  const { data, isLoading } = useGetAllOrderQuery({});
+  const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit] = useState(6);
+  const query: Record<string, any> = {
+    searchTerm,
+    page,
+    limit,
+  };
+
+  const { data, isLoading } = useGetAllOrderQuery(query);
+  const [deleteOrder, { isLoading: deleting }] = useDeleteOrderMutation();
+
   const orderData = data?.data?.result;
   const metaData = data?.data?.meta;
   if (isLoading) {
     <h1>Loading...</h1>;
   }
-  console.log("Data", orderData);
-  console.log("Meta", metaData);
+  const total = metaData?.total || 0;
+  const countPage = Math.ceil(total / limit);
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleDeleteOrder = async (id: string) => {
+    try {
+      const res = await deleteOrder(id);
+      console.log("res", res);
+      if (res?.data?.statusCode === 200) {
+        toast.success(res?.data?.message);
+      } else {
+        toast.error(res?.data?.message);
+      }
+    } catch (err: any) {
+      console.log(err?.message);
+    }
+  };
+
   const renderCell = React.useCallback(
     (orderData: any, columnKey: React.Key) => {
       const cellValue = orderData[columnKey as any];
@@ -74,6 +112,15 @@ const OrderTable = () => {
               <p className=" font-medium">$ {orderData?.totalPrice}</p>
             </div>
           );
+        case "paymentStatus":
+          return (
+            <div className=" flex flex-col tex-sm ">
+              <p className=" font-medium">Status:{orderData.paymentStatus}</p>
+              <p>
+                Way:{(orderData?.payment && orderData.payment?.pay) || "N/A"}
+              </p>
+            </div>
+          );
         case "createdAt":
           return (
             <div className="flex flex-col">
@@ -94,13 +141,23 @@ const OrderTable = () => {
         case "actions":
           return (
             <div className="relative flex items-center gap-2">
-              <Tooltip content="Edit item">
+              <Tooltip content="View Product">
+                <Link href={`/dashboard/admin/order/${orderData.id}`}>
+                  <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                    <Eye />
+                  </span>
+                </Link>
+              </Tooltip>
+              <Tooltip content="Accept Product">
                 <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                  <EditIcon />
+                  <UpdateProcess product={orderData} />
                 </span>
               </Tooltip>
-              <Tooltip color="danger" content="Delete item">
-                <span className="text-lg text-danger cursor-pointer active:opacity-50">
+              <Tooltip color="danger" content="Delete Product">
+                <span
+                  onClick={() => handleDeleteOrder(orderData.id)}
+                  className="text-lg text-danger cursor-pointer active:opacity-50"
+                >
                   <DeleteIcon />
                 </span>
               </Tooltip>
@@ -122,12 +179,8 @@ const OrderTable = () => {
           className=" w-60"
           placeholder="Search by name..."
           startContent={<SearchIcon />}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <Select size="sm" label="Filter" className=" w-60">
-          <SelectItem key={"First"}>First</SelectItem>
-          <SelectItem key={"Second"}>Second</SelectItem>
-          <SelectItem key={"All"}>All</SelectItem>
-        </Select>
       </div>
       <Table isStriped aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
@@ -153,6 +206,15 @@ const OrderTable = () => {
             ))}
         </TableBody>
       </Table>
+
+      <div className=" flex justify-center py-3">
+        <Pagination
+          total={countPage}
+          page={page}
+          showControls
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

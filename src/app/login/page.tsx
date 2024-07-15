@@ -36,8 +36,6 @@ const RegisterPage = () => {
     const toastId = toast.loading("Login Processing !");
     try {
       const res = await userLogin(data);
-      console.log(res);
-      console.log(res?.data?.accessToken);
       if (res?.statusCode === 201) {
         toast.success(res?.message, { id: toastId, duration: 2000 });
         dispatch(setUser({ accessToken: res.data?.accessToken }));
@@ -64,9 +62,7 @@ const RegisterPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-4 bg-opacity-100"
         >
-          <h1 className="text-center text-2xl font-bold">
-            Register In Here...
-          </h1>
+          <h1 className="text-center text-2xl font-bold">Login In Here...</h1>
 
           <div>
             <Input size="md" {...register("email")} label="Email" fullWidth />
@@ -94,7 +90,7 @@ const RegisterPage = () => {
             )}
           </div>
 
-          <Button type="submit">Register</Button>
+          <Button type="submit">Login</Button>
         </form>
 
         <h1 className="text-gray-900 mt-4 text-center">

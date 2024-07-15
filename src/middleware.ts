@@ -4,9 +4,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const AuthRoutes = ["/login", "/register"];
+const commonPrivateRoutes = ["/product/order"];
 
 const roleBasePrivateRoute = {
-  USER: [/^\/dashboard$/],
+  USER: [/^\/dashboard/],
   ADMIN: [/^\/dashboard\/admin/],
 };
 
@@ -21,6 +22,13 @@ export function middleware(request: NextRequest) {
     } else {
       return NextResponse.redirect(new URL("/login", request.url));
     }
+  }
+
+  if (
+    commonPrivateRoutes.includes(pathname)
+    // commonPrivateRoutes.includes(pathname)
+  ) {
+    return NextResponse.next();
   }
 
   let decodedData = null;
@@ -43,5 +51,10 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:page*"],
+  matcher: [
+    "/login",
+    "/register",
+    "/product/order/:page*",
+    "/dashboard/:page*",
+  ],
 };

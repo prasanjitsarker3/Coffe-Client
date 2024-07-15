@@ -50,44 +50,45 @@ export const UserSidebarWrapper = () => {
               href="/dashboard"
             />
             <SidebarMenu title="Main Menu">
-              <SidebarItem
+              {/* <SidebarItem
                 isActive={pathname === "/dashboard/rent-car"}
                 title="Card Products"
                 icon={<ShoppingCart />}
                 href="/dashboard/rent-car"
-              />
+              /> */}
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
+                isActive={pathname === "/dashboard/order"}
+                href="/dashboard/order"
                 title="Order Products"
                 icon={<ShoppingBag />}
               />
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
+                isActive={pathname === "/dashboard/delivery"}
+                href="/dashboard/delivery"
                 title="Delivery Status"
                 icon={<PackageCheck />}
               />
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
+                isActive={pathname === "/dashboard/review"}
+                href="/dashboard/review"
                 title="Review Product"
                 icon={<Star />}
               />
-              <CollapseItems
-                icon={<History />}
-                items={["Banks Accounts", "Credit Cards", "Loans"]}
-                title="Recent history"
-              />
               <SidebarItem
-                isActive={pathname === "/customers"}
+                isActive={pathname === "/dashboard/profile"}
                 title="User Profile"
+                href="/dashboard/profile"
                 icon={<User />}
               />
               <SidebarItem
-                isActive={pathname === "/products"}
+                isActive={pathname === "/dashboard/change-password"}
                 title="Change Password"
+                href="/dashboard/change-password"
                 icon={<PencilLine />}
               />
               <SidebarItem
-                isActive={pathname === "/reports"}
+                isActive={pathname === "/"}
+                href="/"
                 title="Home"
                 icon={<Home />}
               />

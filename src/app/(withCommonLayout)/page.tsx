@@ -1,5 +1,7 @@
 import Banner from "@/Components/pages/Banner";
+import ParallaxData from "@/Components/pages/CompanyData";
 import EXPERIENCE from "@/Components/pages/EXPERIENCE";
+import ContactHome from "@/Components/pages/HomeContact";
 import PackInfo from "@/Components/pages/PackeageInfo";
 import ProductCategory from "@/Components/pages/ProductCategory";
 import ProductShow from "@/Components/pages/ProductShow";
@@ -15,9 +17,11 @@ const HomePage = () => {
       <ProductCategory />
       <ProductShow />
       <TopProduct />
-      <Timeline />
       <ShowExperience />
       <PackInfo />
+      <ParallaxData />
+      <Timeline />
+      <ContactHome />
     </div>
   );
 };

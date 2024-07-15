@@ -44,7 +44,28 @@ const EXPERIENCE = () => {
             <div className="relative h-72 overflow-hidden ">
               <Image
                 src={
-                  "https://img.freepik.com/premium-photo/deliciously-blending-nature-s-finest-roast-coffee-beans-roast-machine-ar-32_983420-222884.jpg?w=740"
+                  "https://img.freepik.com/premium-photo/tea-picking-farmers_12091-120.jpg?w=740"
+                }
+                alt={"Rost"}
+                layout="fill"
+                objectFit="cover"
+                className=" rounded-lg shadow-lg transform transition-transform duration-500 group-hover:rounded-lg group-hover:scale-110"
+              />
+              <div
+                className=" w-32 absolute bottom-0 top-60 backdrop-blur-2xl text-[#00cd71] "
+                style={{ borderRadius: "0px 100px 0px 0px" }}
+              >
+                <h1 className=" text-center pt-3 ">Field Process</h1>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className=" relative group">
+            <div className="relative h-72 overflow-hidden ">
+              <Image
+                src={
+                  "https://img.freepik.com/free-photo/front-view-tea-herbal-concept-with-copy-space_23-2148555200.jpg?t=st=1719424701~exp=1719428301~hmac=4f82fdaf4cd3de484c4e39a58c4eeb110897642be97bc2761dbed03edd832426&w=360"
                 }
                 alt={"Rost"}
                 layout="fill"
@@ -65,7 +86,7 @@ const EXPERIENCE = () => {
             <div className="relative h-72 overflow-hidden ">
               <Image
                 src={
-                  "https://img.freepik.com/premium-photo/deliciously-blending-nature-s-finest-roast-coffee-beans-roast-machine-ar-32_983420-222884.jpg?w=740"
+                  "https://img.freepik.com/free-photo/delicious-coffee-beans-cup_23-2150691429.jpg?t=st=1719424799~exp=1719428399~hmac=671a595a49da7e60100ddc8dbe9f422dc630066008454edc3e2fd6e7a7b05368&w=360"
                 }
                 alt={"Rost"}
                 layout="fill"
@@ -76,7 +97,7 @@ const EXPERIENCE = () => {
                 className=" w-32 absolute bottom-0 top-60 backdrop-blur-2xl text-[#00cd71] "
                 style={{ borderRadius: "0px 100px 0px 0px" }}
               >
-                <h1 className=" text-center pt-3 ">Green Tea</h1>
+                <h1 className=" text-center pt-3 ">Black Coffee</h1>
               </div>
             </div>
           </div>
@@ -86,7 +107,7 @@ const EXPERIENCE = () => {
             <div className="relative h-72 overflow-hidden ">
               <Image
                 src={
-                  "https://img.freepik.com/premium-photo/deliciously-blending-nature-s-finest-roast-coffee-beans-roast-machine-ar-32_983420-222884.jpg?w=740"
+                  "https://img.freepik.com/free-photo/man-workers-collecting-holding-coffee-beans-harvesting-fresh-soft-colours_1268-29288.jpg?t=st=1719425183~exp=1719428783~hmac=95629473b334a9fd6583ccf65e0c0a0bcc1f91d5e6a49566b81f7d53cfdba237&w=740"
                 }
                 alt={"Rost"}
                 layout="fill"
@@ -97,7 +118,7 @@ const EXPERIENCE = () => {
                 className=" w-32 absolute bottom-0 top-60 backdrop-blur-2xl text-[#00cd71] "
                 style={{ borderRadius: "0px 100px 0px 0px" }}
               >
-                <h1 className=" text-center pt-3 ">Green Tea</h1>
+                <h1 className=" text-center pt-3 ">Beans Harvesting</h1>
               </div>
             </div>
           </div>
@@ -107,7 +128,7 @@ const EXPERIENCE = () => {
             <div className="relative h-72 overflow-hidden ">
               <Image
                 src={
-                  "https://img.freepik.com/premium-photo/deliciously-blending-nature-s-finest-roast-coffee-beans-roast-machine-ar-32_983420-222884.jpg?w=740"
+                  "https://img.freepik.com/premium-photo/young-indian-farmer-greenhouse-poly-house_75648-3436.jpg?w=740"
                 }
                 alt={"Rost"}
                 layout="fill"
@@ -118,7 +139,7 @@ const EXPERIENCE = () => {
                 className=" w-32 absolute bottom-0 top-60 backdrop-blur-2xl text-[#00cd71] "
                 style={{ borderRadius: "0px 100px 0px 0px" }}
               >
-                <h1 className=" text-center pt-3 ">Green Tea</h1>
+                <h1 className=" text-center pt-3 ">Poly House</h1>
               </div>
             </div>
           </div>
@@ -128,7 +149,7 @@ const EXPERIENCE = () => {
             <div className="relative h-72 overflow-hidden ">
               <Image
                 src={
-                  "https://img.freepik.com/premium-photo/deliciously-blending-nature-s-finest-roast-coffee-beans-roast-machine-ar-32_983420-222884.jpg?w=740"
+                  "https://img.freepik.com/premium-photo/topdown-view-coffee-roasting-machine-action-capturing-beans-as-they-tumble_891336-54467.jpg?w=740"
                 }
                 alt={"Rost"}
                 layout="fill"
@@ -139,43 +160,12 @@ const EXPERIENCE = () => {
                 className=" w-32 absolute bottom-0 top-60 backdrop-blur-2xl text-[#00cd71] "
                 style={{ borderRadius: "0px 100px 0px 0px" }}
               >
-                <h1 className=" text-center pt-3 ">Green Tea</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className=" relative group">
-            <div className="relative h-72 overflow-hidden ">
-              <Image
-                src={
-                  "https://img.freepik.com/premium-photo/deliciously-blending-nature-s-finest-roast-coffee-beans-roast-machine-ar-32_983420-222884.jpg?w=740"
-                }
-                alt={"Rost"}
-                layout="fill"
-                objectFit="cover"
-                className=" rounded-lg shadow-lg transform transition-transform duration-500 group-hover:rounded-lg group-hover:scale-110"
-              />
-              <div
-                className=" w-32 absolute bottom-0 top-60 backdrop-blur-2xl text-[#00cd71] "
-                style={{ borderRadius: "0px 100px 0px 0px" }}
-              >
-                <h1 className=" text-center pt-3 ">Green Tea</h1>
+                <h1 className=" text-center pt-3 ">Single Estate</h1>
               </div>
             </div>
           </div>
         </SwiperSlide>
       </Swiper>
-      {/* <style jsx global>{`
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: red !important;
-          background: white !important;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-        }
-      `}</style> */}
     </div>
   );
 };

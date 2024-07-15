@@ -22,8 +22,10 @@ const SimilarProduct = () => {
   };
 
   return (
-    <div className="py-24">
-      <h1 className=" text-2xl font-medium py-3">Similar Products</h1>
+    <div className="py-24 md:px-24 px-8">
+      <h1 className=" text-3xl vigaRegular py-3 text-[#00cd71]">
+        Similar Products
+      </h1>
       <div className=" grid grid-cols-2 sm:grid-cols-4 gap-8">
         {product.slice(0, 8).map((item: any, index: number) => (
           <Card
@@ -53,7 +55,7 @@ const SimilarProduct = () => {
               </div>
             </CardBody>
             <CardFooter className="text-small justify-between">
-              <b>{item.name}</b>
+              <b className="text-[#00cd71]">{item.name}</b>
               <p className="text-default-500">$ {item.price}</p>
             </CardFooter>
           </Card>

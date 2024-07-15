@@ -1,10 +1,12 @@
+"use client";
 import React from "react";
 import { Button } from "@nextui-org/react";
 import { TreePalm } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <div className="relative h-[100vh] -mt-16 w-full">
+    <div className="relative h-[100vh]  w-full">
       <video
         autoPlay
         muted
@@ -13,15 +15,36 @@ const Banner = () => {
       >
         <source src="/video/19669266-hd_1280_720_25fps.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black bg-opacity-50  text-white">
+      <div className="absolute inset-0 bg-black bg-opacity-60  text-white">
         <div className=" h-full flex  items-center">
           <div className=" md:px-24 px-6">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#00cd71]">
-              Organic <span className=" text-[#00864a]">Tea & Coffee</span>{" "}
-              Haven
-            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold mb-1 vigaRegular"
+                initial={{ backgroundPosition: "0% 50%" }}
+                animate={{ backgroundPosition: "100% 50%" }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                style={{
+                  background:
+                    "linear-gradient(90deg, #00F260, #00cd71, #00864a)",
+                  backgroundSize: "200%",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Organic Tea & Coffee Haven
+              </motion.h1>
+            </motion.div>
             <div>
-              <p className="text-lg md:text-2xl mb-1">
+              <p className="text-lg md:text-2xl mb-1 text-white">
                 Experience the rich flavors and aromas of our organic tea and
                 coffee collections
               </p>

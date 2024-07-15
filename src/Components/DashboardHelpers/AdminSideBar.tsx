@@ -64,34 +64,21 @@ export const AdminSidebarWrapper = () => {
                 href="/dashboard/admin/order"
               />
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
+                isActive={pathname === "/dashboard/admin/delivery"}
                 title="Delivery Manage"
                 icon={<PackageCheck />}
+                href="/dashboard/admin/delivery"
               />
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
+                isActive={pathname === "/dashboard/admin/user"}
                 title="User Management"
+                href="/dashboard/admin/user"
                 icon={<Users />}
               />
               <SidebarItem
-                isActive={pathname === "/dashboard/payments"}
-                title="Payment Manage"
-                icon={<HandCoins />}
-              />
-
-              {/* <CollapseItems
-                isActive={pathname === "/dashboard/payments"}
-                icon={<HandCoins />}
-                title="Recent history"
-              /> */}
-              <SidebarItem
-                isActive={pathname === "/customers"}
-                title="User Profile"
-                icon={<User />}
-              />
-              <SidebarItem
-                isActive={pathname === "/products"}
+                isActive={pathname === "/dashboard/admin/change-password"}
                 title="Change Password"
+                href="/dashboard/admin/change-password"
                 icon={<PencilLine />}
               />
               <SidebarItem

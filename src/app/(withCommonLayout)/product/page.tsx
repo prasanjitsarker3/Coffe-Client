@@ -8,6 +8,7 @@ import {
 import { clearCart, removeFromCart } from "@/Components/Redux/cartSlice";
 import { setCheckoutData } from "@/Components/Redux/checkoutSlice";
 import { RootState } from "@/Components/Redux/store";
+import TopProduct from "@/Components/pages/UsingPage/TopProduct";
 import { Button, Select, SelectItem } from "@nextui-org/react"; // Ensure SelectItem is imported
 import { Delete, Minus, Plus } from "lucide-react";
 import Image from "next/image";
@@ -60,9 +61,7 @@ const ProductAdd = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (!data || !items.length) {
-    return <div>No products available</div>;
-  }
+
   const products: Product[] = data.data.result;
   const productIdsInCart = items.map((item) => item.productId);
   const reduxData = products.filter((product) =>
@@ -98,6 +97,12 @@ const ProductAdd = () => {
       [productId]: size,
     }));
   };
+  // const handleSizeChange = (productId: string, size: string) => {
+  //   setSelectedSizes((prev) => ({
+  //     ...prev,
+  //     [productId]: size,
+  //   }));
+  // };
   const handleCheckout = () => {
     router.refresh();
     const totalPrice =
@@ -109,120 +114,143 @@ const ProductAdd = () => {
       productId: item.id,
       quantity: quantities[item.id] || 1,
       size: selectedSizes[item.id] || item.size[0],
+      // size: selectedSizes[item.id] || item.size[0],
     }));
 
     const checkoutData = { totalPrice, products };
-    console.log("Checkout Data:", checkoutData);
     dispatch(setCheckoutData(checkoutData));
     router.push("/product/order");
   };
   return (
-    <div className="md:px-24">
-      <Button color="danger" onClick={() => dispatch(clearCart())}>
-        Clear Cart Data
-      </Button>
-      <div>
-        <div className="flex justify-center w-full gap-12">
-          <div className="gap-5 w-[70%]">
-            {reduxData.map((item) => (
-              <div key={item.id} className=" relative">
-                <div
-                  // key={item.id}
-                  className="flex items-center justify-around gap-3 py-3 w-full border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg"
-                >
-                  <div className="relative h-[100px] w-[200px]">
-                    <Image
-                      src={item.image}
-                      alt=""
-                      width={500}
-                      height={500}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                  <div className="space-y-3 text-base text-[#2a286e]">
-                    <h1>Name: {item?.name}</h1>
-                    <h1>Special: {item?.isSpecial}</h1>
-                    <h1>Price: {item?.price}</h1>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-6">
-                      <button
-                        className=" bg-blue-600 rounded-full p-1 cursor-pointer text-white"
-                        onClick={() => handleQuantityChange(item.id, -1)}
-                        disabled={quantities[item.id] === 1}
-                      >
-                        <Minus />
-                      </button>
-                      {quantities[item.id] || 1}
-                      <button
-                        onClick={() => handleQuantityChange(item.id, 1)}
-                        className="bg-blue-600 rounded-full p-1 cursor-pointer text-white"
-                      >
-                        <Plus />
-                      </button>
+    <div>
+      <div className="md:px-24 pt-20">
+        <div>
+          {!(!data || !items.length) ? (
+            <div className="flex justify-center w-full gap-12">
+              <div className="gap-5 w-[70%]">
+                {reduxData.map((item) => (
+                  <div key={item.id} className=" relative">
+                    <div
+                      // key={item.id}
+                      className="flex items-center justify-around gap-3 py-3 w-full border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg"
+                    >
+                      <div className="relative h-[100px] w-[200px]">
+                        <Image
+                          src={item.image}
+                          alt=""
+                          width={500}
+                          height={500}
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className="space-y-3 text-base text-[#2a286e]">
+                        <h1>Name: {item?.name}</h1>
+                        <h1>Special: {item?.isSpecial}</h1>
+                        <h1>Price: {item?.price}</h1>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-6">
+                          <button
+                            className=" bg-blue-600 rounded-full p-1 cursor-pointer text-white"
+                            onClick={() => handleQuantityChange(item.id, -1)}
+                            disabled={quantities[item.id] === 1}
+                          >
+                            <Minus />
+                          </button>
+                          {quantities[item.id] || 1}
+                          <button
+                            onClick={() => handleQuantityChange(item.id, 1)}
+                            className="bg-blue-600 rounded-full p-1 cursor-pointer text-white"
+                          >
+                            <Plus />
+                          </button>
+                        </div>
+                        <div className="w-40">
+                          <Select
+                            // defaultSelectedKeys={[item.size[0]]}
+                            defaultSelectedKeys={item.size[0]}
+                            label="Product Size"
+                            size="sm"
+                            // onSelectionChange={(key) =>
+                            //   //@ts-ignore
+                            //   handleSizeChange(item.id, key)
+                            // }
+                            onChange={(event) =>
+                              handleSizeChange(item.id, event.target.value)
+                            }
+                          >
+                            {/* {item?.size &&
+                              item?.size.map((size) => (
+                                <SelectItem key={size} value={size}>
+                                  {size}
+                                </SelectItem>
+                              ))} */}
+                            {item?.size &&
+                              item?.size.map((size) => (
+                                <SelectItem key={size} value={size}>
+                                  {size}
+                                </SelectItem>
+                              ))}
+                          </Select>
+                        </div>
+                      </div>
                     </div>
-                    <div className="w-40">
-                      <Select
-                        defaultSelectedKeys={[item.size[0]]}
-                        label="Product Size"
-                        size="sm"
-                        onSelectionChange={(key) =>
-                          //@ts-ignore
-                          handleSizeChange(item.id, key)
-                        }
-                      >
-                        {item?.size &&
-                          item?.size.map((size) => (
-                            <SelectItem key={size} value={size}>
-                              {size}
-                            </SelectItem>
-                          ))}
-                      </Select>
+                    <div
+                      onClick={() => dispatch(removeFromCart(item.id))}
+                      className=" h-6 w-6 flex justify-center items-center rounded-full cursor-pointer absolute top-0 right-0 -mr-5 bg-red-500 text-white"
+                    >
+                      <Delete size={15} />{" "}
                     </div>
                   </div>
+                ))}
+              </div>
+              <div className="w-[30%] h-96 border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg">
+                <div className="space-y-3 text-gray-800">
+                  <h1 className="text-xl font-semibold">Order Summary</h1>
+                  <div className="flex justify-between">
+                    <span>Product Price:</span>
+                    <span>${totalPrice.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Item Count:</span>
+                    <span>{totalItemCount}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Total Discount:</span>
+                    <span>${totalDiscount.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Delivery Charge:</span>
+                    <span>$60.00</span>
+                  </div>
+                  <div className="flex justify-between font-semibold text-lg">
+                    <span>Total Price:</span>
+                    <span>${(totalPrice + 60).toFixed(2)}</span>
+                  </div>
+                  <button
+                    onClick={handleCheckout}
+                    className="w-full py-2 mt-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition"
+                  >
+                    Check Out Order
+                  </button>
+                  <Button
+                    fullWidth={true}
+                    color="danger"
+                    onClick={() => dispatch(clearCart())}
+                  >
+                    Clear Cart Data
+                  </Button>
                 </div>
-                <div
-                  onClick={() => dispatch(removeFromCart(item.id))}
-                  className=" h-6 w-6 flex justify-center items-center rounded-full cursor-pointer absolute top-0 right-0 -mr-5 bg-red-500 text-white"
-                >
-                  <Delete size={15} />{" "}
-                </div>
               </div>
-            ))}
-          </div>
-          <div className="w-[30%] h-96 border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg">
-            <div className="space-y-3 text-gray-800">
-              <h1 className="text-xl font-semibold">Order Summary</h1>
-              <div className="flex justify-between">
-                <span>Product Price:</span>
-                <span>${totalPrice.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Item Count:</span>
-                <span>{totalItemCount}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Total Discount:</span>
-                <span>${totalDiscount.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Delivery Charge:</span>
-                <span>$60.00</span>
-              </div>
-              <div className="flex justify-between font-semibold text-lg">
-                <span>Total Price:</span>
-                <span>${(totalPrice + 60).toFixed(2)}</span>
-              </div>
-              <button
-                onClick={handleCheckout}
-                className="w-full py-2 mt-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition"
-              >
-                Check Out Order
-              </button>
             </div>
-          </div>
+          ) : (
+            <h1 className="text-3xl vigaRegular text-center text-red-500">
+              No product cards available
+            </h1>
+          )}
         </div>
       </div>
+      <TopProduct />
     </div>
   );
 };

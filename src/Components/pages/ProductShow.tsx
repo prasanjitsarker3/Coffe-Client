@@ -15,6 +15,7 @@ import Image from "next/image";
 import {
   Box,
   EyeIcon,
+  Heart,
   MapPinned,
   SearchIcon,
   ShoppingCart,
@@ -23,8 +24,12 @@ import SideProductShow from "./UsingPage/SideProductShow";
 import { useGetAllCategoryQuery } from "../Redux/AdminApi/TeaCategory/teaCategoryApi";
 import Link from "next/link";
 import DiscountProduct from "./UsingPage/DiscountProduct";
+import { toast } from "sonner";
+import { useAppDispatch } from "../Redux/Provider/hook";
+import { addToCart } from "../Redux/cartSlice";
 
 const ProductShow = () => {
+  const dispatch = useAppDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [isSpecial, setIsSpecial] = useState("");
   const [categoryId, setCategoryId] = useState("");
@@ -67,14 +72,19 @@ const ProductShow = () => {
     setPage(newPage); // Update page state when page changes
   };
 
+  const handleAddToCart = (productId: any) => {
+    dispatch(addToCart(productId));
+    toast.success("Successfully");
+  };
+
   return (
-    <div className="flex gap-6 w-full py-12 md:px-24 px-6">
+    <div className="flex flex-col md:flex-row gap-6 w-full py-12 md:px-24 px-6">
       <div className="md:w-[30%] w-full">
         <SideProductShow />
         <DiscountProduct />
       </div>
       <div className="md:w-[70%] w-full">
-        <div className="flex justify-between items-center gap-12 pb-5">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-12 pb-5">
           <Input
             isClearable
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -165,15 +175,19 @@ const ProductShow = () => {
                   <div className="pt-2 flex justify-between items-center">
                     <Link href={`/tea/details/${product.id}`}>
                       <Chip
-                        endContent={<EyeIcon size={18} />}
+                        endContent={<ShoppingCart size={18} />}
                         variant="flat"
                         color="default"
+                        size="md"
                       >
-                        See More{" "}
+                        See / Order{" "}
                       </Chip>
                     </Link>
-                    <div className="bg-slate-300 rounded-full p-2">
-                      <ShoppingCart size={15} />
+                    <div
+                      onClick={() => handleAddToCart(product.id)}
+                      className="bg-slate-300 rounded-full p-2"
+                    >
+                      <Heart size={15} />
                     </div>
                   </div>
                 </div>

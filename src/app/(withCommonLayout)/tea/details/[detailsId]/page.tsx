@@ -50,15 +50,18 @@ const DetailsPage = ({ params }: IProps) => {
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="flex flex-col md:flex-row justify-center w-full border-2 border-blue-500 py-8">
+    <div className="container mx-auto pt-6">
+      <h1 className="text-2xl font-bold text-gray-800 py-6 md:pl-20 pl-4">
+        {name} Details Information
+      </h1>
+      <div className="flex flex-col md:flex-row justify-center w-full   p-8">
         <div className="md:w-1/2 w-full flex justify-center md:justify-center  relative h-72">
           <Image
             src={image}
             alt={name}
             width={500}
             height={500}
-            className="rounded-md shadow-lg border-gray-50 border object-cover"
+            className="rounded-md shadow-lg  object-cover"
           />
         </div>
         <div className="md:w-1/2 w-full flex flex-col justify-center pr-8">
@@ -113,7 +116,10 @@ const DetailsPage = ({ params }: IProps) => {
                 </p> */}
               </div>
             </div>
-            <Button onClick={() => handleOrderProduct(id)} className=" w-full">
+            <Button
+              onClick={() => handleOrderProduct(id)}
+              className=" w-full bg-[#00cd71] text-white"
+            >
               Order Now
             </Button>
           </div>

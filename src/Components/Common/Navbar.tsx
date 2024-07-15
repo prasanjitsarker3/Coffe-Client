@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -29,7 +29,7 @@ const NavbarSec = () => {
   const user = useAuthUser();
   const dispatch = useAppDispatch();
   const items = useAppSelector((state: RootState) => state.cart.items);
-  console.log("Length", items.length);
+  const [scrolling, setScrolling] = useState(false);
 
   const routesMap: Record<string, string> = {
     USER: "/dashboard",
@@ -38,8 +38,24 @@ const NavbarSec = () => {
 
   const handleLogoutUser = () => {
     dispatch(logOut());
-    logoutUser(router);
+    logoutUser(router, "/");
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const menuItems = [
     "Profile",
@@ -58,26 +74,30 @@ const NavbarSec = () => {
     <div>
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
-        className="bg-background bg-none backdrop-filter-none bg-opacity-0 backdrop-saturate-0 backdrop-blur-0 shadow-none"
-        maxWidth="2xl"
+        className={`${
+          scrolling
+            ? " fixed w-full z-40 bg-white text-[#00864a] backdrop-filter-none  backdrop-saturate-0 backdrop-blur-0 shadow-none md:px-24 px-8"
+            : "bg-background primary fixed w-full z-40 bg-none backdrop-filter-none bg-opacity-0 backdrop-saturate-0 backdrop-blur-0 shadow-none md:px-24 px-8"
+        }`}
+        maxWidth="full"
       >
         <NavbarContent className="">
           <NavbarBrand>
-            <p className="font-bold text-inherit primary">ACME</p>
+            <p className="font-bold text-inherit ">The Daily Cup</p>
           </NavbarBrand>
         </NavbarContent>
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem className=" primary font-semibold">
+          <NavbarItem className="  font-semibold">
             <Link href="/">Home</Link>
           </NavbarItem>
-          <NavbarItem isActive className=" primary font-semibold">
+          <NavbarItem isActive className="  font-semibold">
             <Link href="/tea">Tea</Link>
           </NavbarItem>
-          <NavbarItem className=" primary font-semibold">
+          <NavbarItem className="  font-semibold">
             <Link href="/about">About</Link>
           </NavbarItem>
-          <NavbarItem className=" primary font-semibold">
+          <NavbarItem className="  font-semibold">
             <Link href={"/product"}>
               <Badge
                 color="danger"
@@ -90,14 +110,14 @@ const NavbarSec = () => {
               </Badge>
             </Link>
           </NavbarItem>
-          <NavbarItem isActive className=" primary font-semibold">
+          <NavbarItem isActive className=" font-semibold">
             {user && <Link href={routesMap[user?.role]}>Dashboard</Link>}
           </NavbarItem>
         </NavbarContent>
 
         <NavbarContent justify="end" className="">
           <NavbarItem className="hidden lg:flex">
-            <ThemeSwitcher />
+            {/* <ThemeSwitcher /> */}
             {!user ? (
               <Link href="/login">
                 <Button color="primary" variant="flat">
@@ -122,11 +142,51 @@ const NavbarSec = () => {
         </NavbarContent>
 
         <NavbarMenu>
-          {menuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link href="/">{item}</Link>
-            </NavbarMenuItem>
-          ))}
+          <NavbarContent className=" flex flex-col" justify="center">
+            <NavbarItem className="  font-semibold">
+              <Link href="/">Home</Link>
+            </NavbarItem>
+            <NavbarItem isActive className="  font-semibold">
+              <Link href="/tea">Tea</Link>
+            </NavbarItem>
+            <NavbarItem className="  font-semibold">
+              <Link href="/about">About</Link>
+            </NavbarItem>
+            <NavbarItem className="  font-semibold">
+              <Link href={"/product"}>
+                <Badge
+                  color="danger"
+                  size="sm"
+                  content={(items && items.length) || 0}
+                  isInvisible={isInvisible}
+                  shape="circle"
+                >
+                  <ShoppingBag size={20} />
+                </Badge>
+              </Link>
+            </NavbarItem>
+            <NavbarItem isActive className=" font-semibold">
+              {user && <Link href={routesMap[user?.role]}>Dashboard</Link>}
+            </NavbarItem>
+
+            <NavbarItem className="">
+              {!user ? (
+                <Link href="/login">
+                  <Button color="primary" variant="flat">
+                    Sign In
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  onClick={handleLogoutUser}
+                  className=" text-white border border-red-500 bg-red-400"
+                  variant="flat"
+                >
+                  Sign Out
+                </Button>
+              )}
+            </NavbarItem>
+          </NavbarContent>
         </NavbarMenu>
       </Navbar>
     </div>
