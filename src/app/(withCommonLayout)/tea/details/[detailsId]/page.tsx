@@ -1,9 +1,9 @@
 "use client";
-import { ShowProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
-import { useSingleProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
-import { useAppDispatch } from "@/Components/Redux/Provider/hook";
-import { addToCart } from "@/Components/Redux/cartSlice";
-import SimilarProduct from "@/Components/pages/UsingPage/SimilarProduct";
+import { ShowProductSkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
+import { useSingleProductQuery } from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
+import { useAppDispatch } from "@/components/Redux/Provider/hook";
+import { addToCart } from "@/components/Redux/cartSlice";
+import SimilarProduct from "@/components/pages/UsingPage/SimilarProduct";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

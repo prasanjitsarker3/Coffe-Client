@@ -1,5 +1,5 @@
-import ProductShow from "@/Components/pages/ProductShow";
-import TopProduct from "@/Components/pages/UsingPage/TopProduct";
+import ProductShow from "@/components/pages/ProductShow";
+import TopProduct from "@/components/pages/UsingPage/TopProduct";
 import React from "react";
 
 const TeaPage = () => {

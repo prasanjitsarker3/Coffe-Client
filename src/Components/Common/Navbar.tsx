@@ -13,15 +13,14 @@ import {
 } from "@nextui-org/react";
 
 import Link from "next/link";
-import { ThemeSwitcher } from "../Lib/ThemeSwitcher";
 import { ShoppingBag } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { RootState } from "../Redux/store";
+import Image from "next/image";
 import useAuthUser from "../Lib/authUser";
 import { useAppDispatch, useAppSelector } from "../Redux/Provider/hook";
 import { logOut } from "../Redux/authSlice";
 import { logoutUser } from "../Server/logoutUser";
-import { useRouter } from "next/navigation";
-import { RootState } from "../Redux/store";
-import Image from "next/image";
 
 const NavbarSec = () => {
   const router = useRouter();

@@ -1,15 +1,15 @@
 "use client";
-import { ShowProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
-import useAuthUser from "@/Components/Lib/authUser";
-import { useGetAllProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
+import { ShowProductSkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
+import useAuthUser from "@/components/Lib/authUser";
+import { useGetAllProductQuery } from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
 import {
   useAppDispatch,
   useAppSelector,
-} from "@/Components/Redux/Provider/hook";
-import { clearCart, removeFromCart } from "@/Components/Redux/cartSlice";
-import { setCheckoutData } from "@/Components/Redux/checkoutSlice";
-import { RootState } from "@/Components/Redux/store";
-import TopProduct from "@/Components/pages/UsingPage/TopProduct";
+} from "@/components/Redux/Provider/hook";
+import { clearCart, removeFromCart } from "@/components/Redux/cartSlice";
+import { setCheckoutData } from "@/components/Redux/checkoutSlice";
+import { RootState } from "@/components/Redux/store";
+import TopProduct from "@/components/pages/UsingPage/TopProduct";
 import { Button, Select, SelectItem } from "@nextui-org/react"; // Ensure SelectItem is imported
 import { Delete, Minus, Plus } from "lucide-react";
 import Image from "next/image";
@@ -102,12 +102,7 @@ const ProductAdd = () => {
       [productId]: size,
     }));
   };
-  // const handleSizeChange = (productId: string, size: string) => {
-  //   setSelectedSizes((prev) => ({
-  //     ...prev,
-  //     [productId]: size,
-  //   }));
-  // };
+
   const handleCheckout = () => {
     router.refresh();
     const totalPrice =
@@ -172,24 +167,13 @@ const ProductAdd = () => {
                         </div>
                         <div className="md:w-40 w-24">
                           <Select
-                            // defaultSelectedKeys={[item.size[0]]}
                             defaultSelectedKeys={item.size[0]}
                             label="Product Size"
                             size="sm"
-                            // onSelectionChange={(key) =>
-                            //   //@ts-ignore
-                            //   handleSizeChange(item.id, key)
-                            // }
                             onChange={(event) =>
                               handleSizeChange(item.id, event.target.value)
                             }
                           >
-                            {/* {item?.size &&
-                              item?.size.map((size) => (
-                                <SelectItem key={size} value={size}>
-                                  {size}
-                                </SelectItem>
-                              ))} */}
                             {item?.size &&
                               item?.size.map((size) => (
                                 <SelectItem key={size} value={size}>

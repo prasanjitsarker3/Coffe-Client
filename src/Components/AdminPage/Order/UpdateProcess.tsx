@@ -1,5 +1,5 @@
 "use client";
-import { useOrderStatusUpdateMutation } from "@/Components/Redux/AdminApi/Order/orderApi";
+import { useOrderStatusUpdateMutation } from "@/components/Redux/AdminApi/Order/orderApi";
 import {
   Button,
   Modal,

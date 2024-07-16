@@ -92,7 +92,7 @@ const Timeline = () => {
       <div className="text-3xl font-bold text-center mb-8">
         <TextAnimation title="Tea and Coffee Processing" />
       </div>
-      <div className=" grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-12">
+      <div className=" grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-12">
         {teaSteps?.map((item) => (
           <motion.div
             key={item.title}

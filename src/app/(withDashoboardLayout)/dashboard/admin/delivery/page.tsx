@@ -1,4 +1,4 @@
-import DeliveryTable from "@/Components/AdminPage/Delivery/DeliveryTable";
+import DeliveryTable from "@/components/AdminPage/Delivery/DeliveryTable";
 import React from "react";
 
 const DeliveryPage = () => {

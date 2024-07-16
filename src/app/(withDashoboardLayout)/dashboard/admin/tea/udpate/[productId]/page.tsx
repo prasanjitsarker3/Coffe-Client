@@ -1,19 +1,19 @@
 "use client";
-import PTCustomSelect from "@/Components/ReactHook/CustomSelect";
-import FromProvider from "@/Components/ReactHook/FormProvider";
-import PTDatePicker from "@/Components/ReactHook/PTDatePicker";
-import PTMultiSelect from "@/Components/ReactHook/SelectMul";
-import PTSingleSelect from "@/Components/ReactHook/SingleSelect";
-import PTInput from "@/Components/ReactHook/TInput";
-import PTTextArea from "@/Components/ReactHook/TeaxtArea";
-import { useGetAllCategoryQuery } from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
+import PTCustomSelect from "@/components/ReactHook/CustomSelect";
+import FromProvider from "@/components/ReactHook/FormProvider";
+import PTDatePicker from "@/components/ReactHook/PTDatePicker";
+import PTMultiSelect from "@/components/ReactHook/SelectMul";
+import PTSingleSelect from "@/components/ReactHook/SingleSelect";
+import PTInput from "@/components/ReactHook/TInput";
+import PTTextArea from "@/components/ReactHook/TeaxtArea";
+import { useGetAllCategoryQuery } from "@/components/Redux/AdminApi/TeaCategory/teaCategoryApi";
 import {
   useSingleProductQuery,
   useUpdateSingleProductMutation,
-} from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
-import { convertCalendarToISODate } from "@/Components/Utlities/InputDateFormate";
-import { imgUrlCreate } from "@/Components/Utlities/fileSendImgDB";
-import ImageUploader from "@/Components/Utlities/imageUploader";
+} from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
+import { convertCalendarToISODate } from "@/components/Utlities/InputDateFormate";
+import { imgUrlCreate } from "@/components/Utlities/fileSendImgDB";
+import ImageUploader from "@/components/Utlities/imageUploader";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { parseDate } from "@internationalized/date";
 import { Button } from "@nextui-org/react";

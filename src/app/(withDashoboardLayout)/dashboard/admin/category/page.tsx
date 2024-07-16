@@ -1,11 +1,11 @@
 "use client";
-import CategoryTable from "@/Components/AdminPage/Category/Categorytable";
+import CategoryTable from "@/components/AdminPage/Category/Categorytable";
 import {
   useCreateCategoryMutation,
   useGetAllCategoryQuery,
-} from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
-import { FileUploader } from "@/Components/Utlities/FileUploader";
-import { imgUrlCreate } from "@/Components/Utlities/fileSendImgDB";
+} from "@/components/Redux/AdminApi/TeaCategory/teaCategoryApi";
+import { FileUploader } from "@/components/Utlities/FileUploader";
+import { imgUrlCreate } from "@/components/Utlities/fileSendImgDB";
 import {
   Button,
   Input,

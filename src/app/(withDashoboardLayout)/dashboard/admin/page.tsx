@@ -1,9 +1,6 @@
 "use client";
-import OrderChart from "@/Components/AdminPage/MetaData/OrderChart";
-import OrderMonthChart from "@/Components/AdminPage/MetaData/OrderMonthChart";
-import ProductChart from "@/Components/AdminPage/MetaData/ProductChart";
-import TotalSkeleton from "@/Components/ChartSkeleton/TotalSkeleton";
-import { useTotalMetaDataQuery } from "@/Components/Redux/AdminApi/metaApi";
+import TotalSkeleton from "@/components/ChartSkeleton/TotalSkeleton";
+import { useTotalMetaDataQuery } from "@/components/Redux/AdminApi/metaApi";
 import {
   Check,
   Coffee,
@@ -14,16 +11,34 @@ import {
   Trash2,
   User,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import React from "react";
 
+const OrderChart = dynamic(
+  () => import("@/components/AdminPage/MetaData/OrderChart"),
+  { ssr: false }
+);
+const OrderMonthChart = dynamic(
+  () => import("@/components/AdminPage/MetaData/OrderMonthChart"),
+  { ssr: false }
+);
+const ProductChart = dynamic(
+  () => import("@/components/AdminPage/MetaData/ProductChart"),
+  { ssr: false }
+);
+
 const AdminDashboardPage = () => {
-  const { data, isLoading } = useTotalMetaDataQuery(undefined);
+  const { data, isLoading, error } = useTotalMetaDataQuery(undefined);
   if (isLoading) {
     <TotalSkeleton />;
   }
   const meta = data?.data ?? [];
-  console.log("Meta", meta);
-  console.log(meta);
+  if (error) {
+    return <h1>Error fetching data</h1>;
+  }
+  if (!meta || meta.length === 0) {
+    return <TotalSkeleton />;
+  }
 
   return (
     <div>
@@ -84,7 +99,6 @@ const AdminDashboardPage = () => {
         <OrderMonthChart />
       </div>
     </div>
-    // </div>
   );
 };
 

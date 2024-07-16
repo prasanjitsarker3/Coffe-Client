@@ -1,7 +1,7 @@
 "use client";
 
-import { NavbarWrapper } from "@/Components/Common/DashboardNavbar";
-import { AdminSidebarWrapper } from "@/Components/DashboardHelpers/AdminSideBar";
+import { NavbarWrapper } from "@/components/Common/DashboardNavbar";
+import { AdminSidebarWrapper } from "@/components/DashboardHelpers/AdminSideBar";
 
 export default function AdminLayout({
   children,

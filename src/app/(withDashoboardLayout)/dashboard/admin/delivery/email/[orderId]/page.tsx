@@ -3,9 +3,9 @@ import {
   useGetSingleOrderQuery,
   useGetSingleOrderSendMailMutation,
   useOrderStatusUpdateMutation,
-} from "@/Components/Redux/AdminApi/Order/orderApi";
-import emailSender from "@/Components/Utlities/emailSender";
-import { generateOrderEmail } from "@/Components/Utlities/generateOrderEmail";
+} from "@/components/Redux/AdminApi/Order/orderApi";
+import emailSender from "@/components/Utlities/emailSender";
+import { generateOrderEmail } from "@/components/Utlities/generateOrderEmail";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import React from "react";

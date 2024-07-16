@@ -1,8 +1,8 @@
 import {
   useDeleteOrderMutation,
   useGetAllOrderQuery,
-} from "@/Components/Redux/AdminApi/Order/orderApi";
-import { dateFormatter } from "@/Components/Utlities/dateFormater";
+} from "@/components/Redux/AdminApi/Order/orderApi";
+import { dateFormatter } from "@/components/Utlities/dateFormater";
 import {
   Button,
   Input,
@@ -167,6 +167,7 @@ const OrderTable = () => {
           return cellValue;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

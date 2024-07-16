@@ -1,5 +1,5 @@
 "use client";
-import { SidebarContext } from "@/Components/DashboardHelpers/layoutContext";
+import { SidebarContext } from "@/components/DashboardHelpers/layoutContext";
 import React, { useState } from "react";
 
 const DashboardProviderLayout = ({

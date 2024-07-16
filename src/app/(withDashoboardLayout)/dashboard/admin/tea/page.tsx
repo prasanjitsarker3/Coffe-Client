@@ -1,4 +1,4 @@
-import TeaTable from "@/Components/AdminPage/TeaManagement/TeaTable";
+import TeaTable from "@/components/AdminPage/TeaManagement/TeaTable";
 
 const TeaManagePage = () => {
   return (

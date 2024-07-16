@@ -1,10 +1,10 @@
 "use client";
-import { CategoryBySkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
-import { useGetAllCategoryQuery } from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
-import { useGetCategoryProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
-import { useAppDispatch } from "@/Components/Redux/Provider/hook";
-import { addToCart } from "@/Components/Redux/cartSlice";
-import TopProduct from "@/Components/pages/UsingPage/TopProduct";
+import { CategoryBySkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
+import { useGetAllCategoryQuery } from "@/components/Redux/AdminApi/TeaCategory/teaCategoryApi";
+import { useGetCategoryProductQuery } from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
+import { useAppDispatch } from "@/components/Redux/Provider/hook";
+import { addToCart } from "@/components/Redux/cartSlice";
+import TopProduct from "@/components/pages/UsingPage/TopProduct";
 import { Chip, Input, Pagination, Select, SelectItem } from "@nextui-org/react";
 import {
   Box,

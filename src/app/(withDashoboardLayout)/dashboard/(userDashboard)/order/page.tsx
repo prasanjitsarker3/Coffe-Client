@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { useDeleteOrderMutation } from "@/Components/Redux/AdminApi/Order/orderApi";
-import { useGetUserOrderQuery } from "@/Components/Redux/UserApi/userOrderApi";
-import { dateFormatter } from "@/Components/Utlities/dateFormater";
+import { useDeleteOrderMutation } from "@/components/Redux/AdminApi/Order/orderApi";
+import { useGetUserOrderQuery } from "@/components/Redux/UserApi/userOrderApi";
+import { dateFormatter } from "@/components/Utlities/dateFormater";
 import {
   Button,
   Input,

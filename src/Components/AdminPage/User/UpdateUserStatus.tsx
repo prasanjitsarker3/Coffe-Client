@@ -14,7 +14,7 @@ import {
 } from "@nextui-org/react";
 import { Pencil } from "lucide-react";
 import { toast } from "sonner";
-import { useRoleUpdateMutation } from "@/Components/Redux/AdminApi/User/userApi";
+import { useRoleUpdateMutation } from "@/components/Redux/AdminApi/User/userApi";
 
 const items = ["SUPPER_ADMIN", "ADMIN", "USER"];
 const UpdateUserStatus = (userData: any) => {

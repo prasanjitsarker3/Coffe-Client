@@ -1,19 +1,19 @@
 "use client";
-import useAuthUser from "@/Components/Lib/authUser";
-import FromProvider from "@/Components/ReactHook/FormProvider";
-import PTInput from "@/Components/ReactHook/TInput";
+import useAuthUser from "@/components/Lib/authUser";
+import FromProvider from "@/components/ReactHook/FormProvider";
+import PTInput from "@/components/ReactHook/TInput";
 import {
   useCashOnPaymentMutation,
   useCreateOrderMutation,
   useOnlinePaymentMutation,
-} from "@/Components/Redux/AdminApi/Order/orderApi";
+} from "@/components/Redux/AdminApi/Order/orderApi";
+import { clearCart } from "@/components/Redux/cartSlice";
+import { clearCheckoutData } from "@/components/Redux/checkoutSlice";
 import {
   useAppDispatch,
   useAppSelector,
-} from "@/Components/Redux/Provider/hook";
-import { clearCart } from "@/Components/Redux/cartSlice";
-import { clearCheckoutData } from "@/Components/Redux/checkoutSlice";
-import { RootState } from "@/Components/Redux/store";
+} from "@/components/Redux/Provider/hook";
+import { RootState } from "@/components/Redux/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Button,
@@ -50,9 +50,6 @@ const ProductOrderPage = () => {
     useOnlinePaymentMutation();
   const dispatch = useAppDispatch();
 
-  // if (items.totalPrice === 0) {
-  //   router.push("/");
-  // }
   const defaultValue = {
     name: user.name,
     email: user.email,

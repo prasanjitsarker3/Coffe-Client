@@ -7,12 +7,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { userLogin } from "@/Components/Server/userLogin";
+import { userLogin } from "@/components/Server/userLogin";
 import { useRouter } from "next/navigation";
-import { logOut, setUser } from "@/Components/Redux/authSlice";
-import { useChangePasswordMutation } from "@/Components/Redux/AdminApi/User/userApi";
-import { useAppDispatch } from "@/Components/Redux/Provider/hook";
-import { logoutUser } from "@/Components/Server/logoutUser";
+import { logOut, setUser } from "@/components/Redux/authSlice";
+import { useChangePasswordMutation } from "@/components/Redux/AdminApi/User/userApi";
+import { useAppDispatch } from "@/components/Redux/Provider/hook";
+import { logoutUser } from "@/components/Server/logoutUser";
 
 const loginValidationSchema = z.object({
   oldPassword: z.string().min(6, "Password must be at least 6 characters"),

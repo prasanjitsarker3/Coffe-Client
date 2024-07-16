@@ -1,7 +1,7 @@
-import AboutBanner from "@/Components/pages/About/AboutBanner";
-import ContactHome from "@/Components/pages/HomeContact";
-import ShowExperience from "@/Components/pages/ShowExperience";
-import Timeline from "@/Components/pages/TimeLine";
+import AboutBanner from "@/components/pages/About/AboutBanner";
+import ContactHome from "@/components/pages/HomeContact";
+import ShowExperience from "@/components/pages/ShowExperience";
+import Timeline from "@/components/pages/TimeLine";
 import React from "react";
 
 const AboutPage = () => {

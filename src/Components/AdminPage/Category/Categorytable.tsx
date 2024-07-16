@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useState } from "react";
 import {
@@ -21,10 +22,10 @@ import {
 } from "@nextui-org/react";
 import { DeleteIcon, EditIcon, EyeIcon } from "lucide-react";
 import Image from "next/image";
-import { dateFormatter } from "@/Components/Utlities/dateFormater";
-import { useDeleteCategoryMutation } from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
+import { dateFormatter } from "@/components/Utlities/dateFormater";
+import { useDeleteCategoryMutation } from "@/components/Redux/AdminApi/TeaCategory/teaCategoryApi";
 import { toast } from "sonner";
-import { FileUploader } from "@/Components/Utlities/FileUploader";
+import { FileUploader } from "@/components/Utlities/FileUploader";
 
 type IProps = {
   data: Array<{

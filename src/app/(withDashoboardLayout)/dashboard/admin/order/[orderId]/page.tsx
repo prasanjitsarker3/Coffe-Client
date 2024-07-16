@@ -2,7 +2,7 @@
 import {
   useGetSingleOrderQuery,
   useOrderStatusUpdateMutation,
-} from "@/Components/Redux/AdminApi/Order/orderApi";
+} from "@/components/Redux/AdminApi/Order/orderApi";
 import {
   Button,
   Modal,

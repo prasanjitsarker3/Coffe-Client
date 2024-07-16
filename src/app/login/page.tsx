@@ -7,10 +7,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { userLogin } from "@/Components/Server/userLogin";
+import { userLogin } from "@/components/Server/userLogin";
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/Components/Redux/Provider/hook";
-import { setUser } from "@/Components/Redux/authSlice";
+import { useAppDispatch } from "@/components/Redux/Provider/hook";
+import { setUser } from "@/components/Redux/authSlice";
 
 const loginValidationSchema = z.object({
   email: z.string().email("Invalid email address"),

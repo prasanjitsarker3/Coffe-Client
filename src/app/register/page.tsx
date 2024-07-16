@@ -7,10 +7,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { userRegister } from "@/Components/Server/UserRegister";
-import { userLogin } from "@/Components/Server/userLogin";
-import { useAppDispatch } from "@/Components/Redux/Provider/hook";
-import { setUser } from "@/Components/Redux/authSlice";
+import { userRegister } from "@/components/Server/UserRegister";
+import { userLogin } from "@/components/Server/userLogin";
+import { useAppDispatch } from "@/components/Redux/Provider/hook";
+import { setUser } from "@/components/Redux/authSlice";
 import { useRouter } from "next/navigation";
 
 const loginValidationSchema = z.object({

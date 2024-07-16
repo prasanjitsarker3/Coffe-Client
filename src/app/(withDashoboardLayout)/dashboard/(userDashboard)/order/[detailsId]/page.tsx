@@ -1,6 +1,6 @@
 "use client";
-import { SingleProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
-import { useGetSingleOrderQuery } from "@/Components/Redux/AdminApi/Order/orderApi";
+import { SingleProductSkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
+import { useGetSingleOrderQuery } from "@/components/Redux/AdminApi/Order/orderApi";
 import { Skeleton } from "@nextui-org/react";
 import React from "react";
 

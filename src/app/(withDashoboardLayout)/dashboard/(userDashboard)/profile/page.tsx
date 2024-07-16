@@ -2,9 +2,9 @@
 import {
   useGetMeQuery,
   useUpdateProfileInfoMutation,
-} from "@/Components/Redux/AdminApi/User/userApi";
-import { imgUrlCreate } from "@/Components/Utlities/fileSendImgDB";
-import ImageUploader from "@/Components/Utlities/imageUploader";
+} from "@/components/Redux/AdminApi/User/userApi";
+import { imgUrlCreate } from "@/components/Utlities/fileSendImgDB";
+import ImageUploader from "@/components/Utlities/imageUploader";
 import {
   Button,
   Input,

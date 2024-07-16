@@ -1,6 +1,6 @@
 "use client";
-import { PieChartSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
-import { useProductPieDataQuery } from "@/Components/Redux/AdminApi/metaApi";
+import { PieChartSkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
+import { useProductPieDataQuery } from "@/components/Redux/AdminApi/metaApi";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 

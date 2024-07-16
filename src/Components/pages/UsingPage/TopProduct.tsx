@@ -1,8 +1,8 @@
 "use client";
-import { TopProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
-import { useGetAllProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
-import { addToCart } from "@/Components/Redux/cartSlice";
-import TextAnimation from "@/Components/Utlities/TextAnimation";
+import { TopProductSkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
+import { useGetAllProductQuery } from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
+import { addToCart } from "@/components/Redux/cartSlice";
+import TextAnimation from "@/components/Utlities/TextAnimation";
 import { Chip } from "@nextui-org/react";
 import { Box, EyeIcon, Heart, MapPinned, ShoppingCart } from "lucide-react";
 import Image from "next/image";

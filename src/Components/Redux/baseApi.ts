@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { RootState } from "./store";
 
 const baseQueryF = fetchBaseQuery({
-  baseUrl: "http://localhost:3333/api/v1",
+  baseUrl: "https://tea-server-ten.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     // const token = (getState() as RootState).auth.accessToken;

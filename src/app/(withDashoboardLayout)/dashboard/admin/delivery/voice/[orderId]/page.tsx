@@ -1,5 +1,5 @@
 "use client";
-import { useGetSingleOrderQuery } from "@/Components/Redux/AdminApi/Order/orderApi";
+import { useGetSingleOrderQuery } from "@/components/Redux/AdminApi/Order/orderApi";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import React from "react";

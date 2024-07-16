@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useGetAllCategoryQuery } from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
+import { useGetAllCategoryQuery } from "@/components/Redux/AdminApi/TeaCategory/teaCategoryApi";
 import {
   useDeleteSingleProductMutation,
   useGetAllProductQuery,
-} from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
-import { dateFormatter } from "@/Components/Utlities/dateFormater";
+} from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
+import { dateFormatter } from "@/components/Utlities/dateFormater";
 import {
   Avatar,
   Chip,

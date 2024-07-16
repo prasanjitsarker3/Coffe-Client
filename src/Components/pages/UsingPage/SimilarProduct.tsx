@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import { useGetAllProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
+import { useGetAllProductQuery } from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
 import { Heart } from "lucide-react";
 import { toast } from "sonner";
-import { SimilarProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
+import { SimilarProductSkeleton } from "@/components/ChartSkeleton/TotalSkeleton";
 
 const SimilarProduct = () => {
   const { data, isLoading } = useGetAllProductQuery({});

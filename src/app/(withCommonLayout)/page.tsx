@@ -1,13 +1,13 @@
-import Banner from "@/Components/pages/Banner";
-import ParallaxData from "@/Components/pages/CompanyData";
-import EXPERIENCE from "@/Components/pages/EXPERIENCE";
-import ContactHome from "@/Components/pages/HomeContact";
-import PackInfo from "@/Components/pages/PackeageInfo";
-import ProductCategory from "@/Components/pages/ProductCategory";
-import ProductShow from "@/Components/pages/ProductShow";
-import ShowExperience from "@/Components/pages/ShowExperience";
-import Timeline from "@/Components/pages/TimeLine";
-import TopProduct from "@/Components/pages/UsingPage/TopProduct";
+import Banner from "@/components/pages/Banner";
+import ParallaxData from "@/components/pages/CompanyData";
+import EXPERIENCE from "@/components/pages/EXPERIENCE";
+import ContactHome from "@/components/pages/HomeContact";
+import PackInfo from "@/components/pages/PackeageInfo";
+import ProductCategory from "@/components/pages/ProductCategory";
+import ProductShow from "@/components/pages/ProductShow";
+import ShowExperience from "@/components/pages/ShowExperience";
+import Timeline from "@/components/pages/TimeLine";
+import TopProduct from "@/components/pages/UsingPage/TopProduct";
 import React from "react";
 
 const HomePage = () => {

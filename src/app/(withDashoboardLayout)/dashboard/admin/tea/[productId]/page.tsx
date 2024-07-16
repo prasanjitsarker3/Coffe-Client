@@ -1,6 +1,6 @@
 "use client";
-import { useSingleProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
-import { dateFormatter } from "@/Components/Utlities/dateFormater";
+import { useSingleProductQuery } from "@/components/Redux/AdminApi/TeaManament/teaManageApi";
+import { dateFormatter } from "@/components/Utlities/dateFormater";
 import { Skeleton } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";

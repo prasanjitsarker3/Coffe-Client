@@ -1,4 +1,4 @@
-import TextAnimation from "@/Components/Utlities/TextAnimation";
+import TextAnimation from "@/components/Utlities/TextAnimation";
 import React from "react";
 
 const AboutBanner = () => {

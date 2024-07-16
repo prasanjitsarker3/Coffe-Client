@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { useMonthlyOrderMetaDataQuery } from "@/Components/Redux/AdminApi/metaApi";
+import { useMonthlyOrderMetaDataQuery } from "@/components/Redux/AdminApi/metaApi";
 
 const OrderMonthChart: React.FC = () => {
   const { data, isLoading } = useMonthlyOrderMetaDataQuery(undefined);

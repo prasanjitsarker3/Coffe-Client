@@ -1,10 +1,10 @@
 "use client";
-import UpdateUserStatus from "@/Components/AdminPage/User/UpdateUserStatus";
+import UpdateUserStatus from "@/components/AdminPage/User/UpdateUserStatus";
 import {
   useDeleteUserMutation,
   useGetAllUserQuery,
-} from "@/Components/Redux/AdminApi/User/userApi";
-import { dateFormatter } from "@/Components/Utlities/dateFormater";
+} from "@/components/Redux/AdminApi/User/userApi";
+import { dateFormatter } from "@/components/Utlities/dateFormater";
 import {
   Button,
   Input,
@@ -21,7 +21,7 @@ import {
 } from "@nextui-org/react";
 import { DeleteIcon, Pencil, SearchIcon } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const columns = [
@@ -82,7 +82,7 @@ const UserDashboard = () => {
       console.log(err?.message);
     }
   };
-  const renderCell = React.useCallback(
+  const renderCell = useCallback(
     (userData: any, columnKey: React.Key) => {
       const cellValue = userData[columnKey as any];
 
@@ -148,6 +148,7 @@ const UserDashboard = () => {
           return cellValue;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

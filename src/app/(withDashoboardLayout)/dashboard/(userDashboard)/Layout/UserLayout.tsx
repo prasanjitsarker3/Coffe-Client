@@ -1,6 +1,6 @@
 "use client";
-import { NavbarWrapper } from "@/Components/Common/DashboardNavbar";
-import { UserSidebarWrapper } from "@/Components/DashboardHelpers/UserSideBar";
+import { NavbarWrapper } from "@/components/Common/DashboardNavbar";
+import { UserSidebarWrapper } from "@/components/DashboardHelpers/UserSideBar";
 
 export default function UserLayout({
   children,

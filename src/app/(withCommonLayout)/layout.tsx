@@ -1,5 +1,5 @@
-import Footer from "@/Components/Common/Footer";
-import NavbarSec from "@/Components/Common/Navbar";
+import Footer from "@/components/Common/Footer";
+import NavbarSec from "@/components/Common/Navbar";
 import { Metadata } from "next";
 import React from "react";
 
