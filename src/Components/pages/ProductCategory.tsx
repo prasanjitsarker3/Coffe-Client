@@ -4,6 +4,8 @@ import { useGetAllCategoryQuery } from "../Redux/AdminApi/TeaCategory/teaCategor
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { CategorySkeleton } from "../ChartSkeleton/TotalSkeleton";
+import TextAnimation from "../Utlities/TextAnimation";
 
 interface CategoryItem {
   id: string;
@@ -15,7 +17,7 @@ const ProductCategory = () => {
   const { data, isLoading, isError } = useGetAllCategoryQuery({});
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <CategorySkeleton />;
   }
 
   if (isError) {
@@ -24,20 +26,18 @@ const ProductCategory = () => {
 
   return (
     <div className="md:px-24 px-6 py-12">
-      <h1 className="py-5 text-2xl text-center text-[#00cd71]">
-        Find the Perfect Product Category That Matches Your Preferences and
-        Requirements
-      </h1>
+      <div className="py-5 text-4xl text-center">
+        <TextAnimation title="Explore Our Tea and Coffee Categories" />
+      </div>
       <div className="grid-cols-2 md:grid-cols-6 grid gap-5">
         {data?.data?.map((item: CategoryItem) => (
           <Link key={item.id} href={`/tea/category/${item.id}`}>
             <motion.div
               className="relative cursor-pointer group p-4 border  border-slate-100 bg-white rounded-lg text-[#00cd71]"
               whileHover={{
-                backgroundColor: "#00cd71",
-                color: "#FFF",
+                scale: 1.05,
                 transition: {
-                  duration: 1,
+                  duration: 0.5,
                   ease: "easeInOut",
                 },
               }}

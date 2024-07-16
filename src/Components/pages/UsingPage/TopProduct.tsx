@@ -1,6 +1,8 @@
 "use client";
+import { TopProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
 import { useGetAllProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
 import { addToCart } from "@/Components/Redux/cartSlice";
+import TextAnimation from "@/Components/Utlities/TextAnimation";
 import { Chip } from "@nextui-org/react";
 import { Box, EyeIcon, Heart, MapPinned, ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -12,7 +14,7 @@ const TopProduct = () => {
   const { data, isLoading } = useGetAllProductQuery({});
   const dispatch = useDispatch();
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <TopProductSkeleton />;
   }
 
   const products = data?.data?.result;
@@ -25,9 +27,9 @@ const TopProduct = () => {
 
   return (
     <div className=" md:px-24 px-6 py-8">
-      <h1 className=" py-5 text-bold text-3xl vigaRegular text-[#00cd71] ">
-        Top Product
-      </h1>
+      <div className=" py-5 text-bold text-3xl vigaRegular">
+        <TextAnimation title="Top Energy-Enhancing Teas & Coffees" />
+      </div>
       <div className="grid md:grid-cols-5 gap-8">
         {products &&
           products.slice(0, 5).map((product: any) => (

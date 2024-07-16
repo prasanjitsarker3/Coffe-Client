@@ -3,26 +3,38 @@ import React, { useState } from "react";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { useGetAllProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
 import { Heart } from "lucide-react";
+import { toast } from "sonner";
+import { SimilarProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
 
 const SimilarProduct = () => {
   const { data, isLoading } = useGetAllProductQuery({});
   const [likedItems, setLikedItems] = useState<{ [key: number]: boolean }>({});
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <SimilarProductSkeleton />;
   }
 
   const product = data?.data?.result;
 
   const handleLikeClick = (index: number) => {
-    setLikedItems((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+    setLikedItems((prev) => {
+      const updatedLikedItems = {
+        ...prev,
+        [index]: !prev[index],
+      };
+      if (updatedLikedItems[index]) {
+        toast.success("Added to cart", { duration: 1000 });
+      } else {
+        toast.error("Removed from cart", { duration: 1000 });
+      }
+      return updatedLikedItems;
+    });
   };
 
+  console.log("Data", product);
+
   return (
-    <div className="py-24 md:px-24 px-8">
+    <div className="py-24 ">
       <h1 className=" text-3xl vigaRegular py-3 text-[#00cd71]">
         Similar Products
       </h1>

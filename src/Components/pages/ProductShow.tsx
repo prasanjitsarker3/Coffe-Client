@@ -10,6 +10,7 @@ import {
   Pagination,
   Select,
   SelectItem,
+  Tooltip,
 } from "@nextui-org/react";
 import Image from "next/image";
 import {
@@ -27,6 +28,8 @@ import DiscountProduct from "./UsingPage/DiscountProduct";
 import { toast } from "sonner";
 import { useAppDispatch } from "../Redux/Provider/hook";
 import { addToCart } from "../Redux/cartSlice";
+import { ProductSkeleton } from "../ChartSkeleton/TotalSkeleton";
+import { motion } from "framer-motion";
 
 const ProductShow = () => {
   const dispatch = useAppDispatch();
@@ -60,7 +63,11 @@ const ProductShow = () => {
   );
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return (
+      <h1>
+        <ProductSkeleton />
+      </h1>
+    );
   }
 
   const products = data?.data?.result;
@@ -130,11 +137,13 @@ const ProductShow = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {products &&
             products.map((product: any) => (
-              <div
+              <motion.div
                 key={product.id}
-                className="relative cursor-pointer group p-4 border rounded-lg transition-all duration-300 ease-in-out bg-gradient-to-b from-white to-gray-200 hover:bg-gradient-to-t hover:from-gray-100 hover:to-white"
+                className="relative cursor-pointer group p-4 border rounded-lg  bg-gradient-to-b from-white to-gray-200 hover:bg-gradient-to-t hover:from-gray-100 hover:to-white"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 200 }}
               >
-                <div className="h-[150px] w-full relative bg-red-400">
+                <div className="lg:h-[150px] md:h-[150px] h-[200px] w-full relative">
                   <Image
                     alt={product.name}
                     className="object-cover"
@@ -187,12 +196,14 @@ const ProductShow = () => {
                       onClick={() => handleAddToCart(product.id)}
                       className="bg-slate-300 rounded-full p-2"
                     >
-                      <Heart size={15} />
+                      <Tooltip content="Add To Card">
+                        <Heart size={15} />
+                      </Tooltip>
                     </div>
                   </div>
                 </div>
                 {/* <div className="absolute inset-0 border-2 border-transparent rounded-lg group-hover:border-blue-500 transition-all duration-300 ease-in-out"></div> */}
-              </div>
+              </motion.div>
             ))}
         </div>
         <div className="py-5 flex justify-center w-full mx-auto">

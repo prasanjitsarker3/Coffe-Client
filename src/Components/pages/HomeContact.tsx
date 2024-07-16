@@ -13,14 +13,15 @@ const ContactHome = () => {
         />
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-center h-full md:px-24 px-6 bg-black bg-opacity-30">
           <div className="md:w-1/2 w-full space-y-5">
-            <h1 className="text-4xl leading-relaxed font-semibold vigaRegular text-[#2C2A77]">
+            <h1 className="text-4xl leading-relaxed font-semibold vigaRegular text-white">
               Contact us
             </h1>
             <h1 className="text-xl font-normal font-exotwo text-white">
-              Whether you are a large enterprise looking to augment your teams
-              with expert resources or an SME looking to scale your business or
-              a startup looking to build something. We are your digital growth
-              partner.
+              Looking to elevate your **tea and coffee ecommerce** business? We
+              can be your partner! Whether you are a large established brand or
+              a passionate startup, we offer expert resources to help you grow.
+              Let us augment your team, scale your online store, or craft a
+              winning marketing strategy – we are here to brew your success.
             </h1>
             <div className="space-y-1">
               <h1 className="text-xl font-exotwo">
@@ -32,7 +33,7 @@ const ContactHome = () => {
             </div>
           </div>
           <div className="md:w-1/2 w-full mt-8 md:mt-0">
-            <div className="max-w-md mx-auto p-6 py-12 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg shadow-md text-black rounded-lg">
+            <div className="max-w-md mx-auto p-6 py-12 bg-black bg-opacity-20 backdrop-filter backdrop-blur-lg shadow-md text-black rounded-lg">
               <div className="space-y-4 px-4">
                 <div className="relative">
                   <input

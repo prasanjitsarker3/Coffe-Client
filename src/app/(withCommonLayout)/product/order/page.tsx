@@ -121,8 +121,8 @@ const ProductOrderPage = () => {
     }
   };
   return (
-    <div className=" pt-24">
-      <div className=" flex justify-center gap-12">
+    <div className=" pt-24 bg-slate-100 h-screen">
+      <div className=" flex justify-center gap-12 ">
         <div className="border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg">
           <FromProvider
             onSubmit={handleCreateTea}

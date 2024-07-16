@@ -21,6 +21,7 @@ import { logOut } from "../Redux/authSlice";
 import { logoutUser } from "../Server/logoutUser";
 import { useRouter } from "next/navigation";
 import { RootState } from "../Redux/store";
+import Image from "next/image";
 
 const NavbarSec = () => {
   const router = useRouter();
@@ -82,8 +83,14 @@ const NavbarSec = () => {
         maxWidth="full"
       >
         <NavbarContent className="">
-          <NavbarBrand>
-            <p className="font-bold text-inherit ">The Daily Cup</p>
+          <NavbarBrand className="flex items-center">
+            <Image
+              src={"https://cdn-icons-png.flaticon.com/128/10021/10021745.png"}
+              width={30}
+              height={30}
+              alt=""
+            />
+            <p className="font-bold text-inherit pt-1">The Daily Cup</p>
           </NavbarBrand>
         </NavbarContent>
 
@@ -120,7 +127,11 @@ const NavbarSec = () => {
             {/* <ThemeSwitcher /> */}
             {!user ? (
               <Link href="/login">
-                <Button color="primary" variant="flat">
+                <Button
+                  size="sm"
+                  className="text-white bg-blue-500"
+                  variant="flat"
+                >
                   Sign In
                 </Button>
               </Link>
@@ -178,6 +189,7 @@ const NavbarSec = () => {
                 </Link>
               ) : (
                 <Button
+                  size="sm"
                   onClick={handleLogoutUser}
                   className=" text-white border border-red-500 bg-red-400"
                   variant="flat"

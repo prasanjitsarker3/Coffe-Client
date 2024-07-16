@@ -1,24 +1,23 @@
 "use client";
+import { SingleProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
 import { useGetSingleOrderQuery } from "@/Components/Redux/AdminApi/Order/orderApi";
+import { Skeleton } from "@nextui-org/react";
 import React from "react";
 
 const ProductDetails = (params: { params: any }) => {
   const orderId = params.params.detailsId;
   const { data, isLoading } = useGetSingleOrderQuery(orderId);
   if (isLoading) {
-    <h1>Loading...</h1>;
+    <SingleProductSkeleton />;
   }
   const order = data?.data;
 
   if (!order) {
-    return (
-      <h1 className="text-center text-2xl text-red-500">No order found</h1>
-    );
+    return <SingleProductSkeleton />;
   }
-  console.log(order);
   return (
     <div className=" w-[70%] mx-auto mt-5">
-      <div className="  border-2 border-gray-50  p-10">
+      <div className="  border-2 border-gray-200  p-10">
         <h1 className=" py-3  text-slate-800">Order Tracking Id:{order?.id}</h1>
         <div>
           <div className=" grid md:grid-cols-2 gap-3">

@@ -1,4 +1,5 @@
 "use client";
+import { ShowProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
 import { useSingleProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
 import { useAppDispatch } from "@/Components/Redux/Provider/hook";
 import { addToCart } from "@/Components/Redux/cartSlice";
@@ -22,7 +23,7 @@ const DetailsPage = ({ params }: IProps) => {
   const router = useRouter();
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <ShowProductSkeleton />;
   }
 
   const {
@@ -50,11 +51,11 @@ const DetailsPage = ({ params }: IProps) => {
   };
 
   return (
-    <div className="container mx-auto pt-6">
-      <h1 className="text-2xl font-bold text-gray-800 py-6 md:pl-20 pl-4">
+    <div className="pt-16 md:px-24 px-8">
+      <h1 className="text-2xl font-bold text-gray-800 py-6  pl-4 bg-slate-100">
         {name} Details Information
       </h1>
-      <div className="flex flex-col md:flex-row justify-center w-full   p-8">
+      <div className="flex flex-col md:flex-row justify-center w-full  bg-slate-100  p-8">
         <div className="md:w-1/2 w-full flex justify-center md:justify-center  relative h-72">
           <Image
             src={image}

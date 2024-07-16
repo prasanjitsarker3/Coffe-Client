@@ -1,17 +1,23 @@
 "use client";
+import { CategoryBySkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
 import { useGetAllCategoryQuery } from "@/Components/Redux/AdminApi/TeaCategory/teaCategoryApi";
 import { useGetCategoryProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
+import { useAppDispatch } from "@/Components/Redux/Provider/hook";
+import { addToCart } from "@/Components/Redux/cartSlice";
 import TopProduct from "@/Components/pages/UsingPage/TopProduct";
 import { Chip, Input, Pagination, Select, SelectItem } from "@nextui-org/react";
 import {
   Box,
   EyeIcon,
+  Heart,
   MapPinned,
   SearchIcon,
   ShoppingCart,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface IParams {
   params: {
@@ -26,6 +32,7 @@ const CategoryProductPage = (params: IParams) => {
   const [categoryId, setCategoryId] = useState("");
   const [page, setPage] = useState(1);
   const [limit] = useState(6);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (searchTerm.length > 0) {
@@ -53,7 +60,12 @@ const CategoryProductPage = (params: IParams) => {
     {}
   );
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className=" pt-12">
+        <CategoryBySkeleton />
+      </div>
+    );
 
   const categoryData = data?.data?.result;
   const metaData = data?.data?.meta;
@@ -64,9 +76,15 @@ const CategoryProductPage = (params: IParams) => {
     setPage(newPage);
   };
 
+  const handleAddToCart = (productId: any) => {
+    console.log("Check", productId);
+    dispatch(addToCart(productId));
+    toast.success("Successfully");
+  };
+
   return (
     <div>
-      <div className="  md:px-24 px-6">
+      <div className="  md:px-24 px-6 pt-14">
         <h1 className=" text-primary text-lg py-3">Category By All Products</h1>
         <div>
           <div className="flex justify-between items-center gap-12 pb-5">
@@ -158,19 +176,25 @@ const CategoryProductPage = (params: IParams) => {
                       </small>
                     </div>
                     <div className="pt-2 flex justify-between items-center">
-                      <Chip
-                        endContent={<EyeIcon size={18} />}
-                        variant="flat"
-                        color="default"
+                      <Link href={`/tea/details/${product.id}`}>
+                        <Chip
+                          endContent={<ShoppingCart size={18} />}
+                          variant="flat"
+                          color="default"
+                        >
+                          See / Order{" "}
+                        </Chip>
+                      </Link>
+
+                      <div
+                        onClick={() => handleAddToCart(product.id)}
+                        className="bg-slate-300 rounded-full p-2"
                       >
-                        See More{" "}
-                      </Chip>
-                      <div className="bg-slate-300 rounded-full p-2">
-                        <ShoppingCart size={15} />
+                        <Heart size={15} />
                       </div>
                     </div>
                   </div>
-                  <div className="absolute inset-0 border-2 border-transparent rounded-lg group-hover:border-blue-500 transition-all duration-300 ease-in-out"></div>
+                  {/* <div className="absolute inset-0 border-2 border-transparent rounded-lg group-hover:border-blue-500 transition-all duration-300 ease-in-out"></div> */}
                 </div>
               ))}
           </div>

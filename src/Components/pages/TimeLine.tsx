@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Tabs, Tab } from "@nextui-org/react";
+import { motion } from "framer-motion";
+import TextAnimation from "../Utlities/TextAnimation";
 
 const teaSteps = [
   {
@@ -10,38 +11,38 @@ const teaSteps = [
     heading: "Harvesting",
     description:
       "The first step in tea and coffee processing is harvesting the leaves and beans.",
-    img: "https://img.freepik.com/free-photo/tea-pickers-working-kerela-india_53876-42847.jpg?t=st=1719340254~exp=1719343854~hmac=1d0f52edff1dd4acd0ac79ded18d7213534863b7a13adac2f72cfd4a5f5f9fe0&w=740", // replace with your image path
+    img: "https://cdn-icons-png.flaticon.com/128/9951/9951893.png",
   },
   {
     title: "Step 2",
     heading: "Withering",
     description: "The leaves are withered to remove excess moisture.",
-    img: "https://as1.ftcdn.net/v2/jpg/02/49/70/10/1000_F_249701052_jIBQ878I9o2hJTKa695jUw3cW32xMkbw.jpg", // replace with your image path
+    img: "https://cdn-icons-png.flaticon.com/128/6041/6041557.png", // replace with your image path
   },
   {
     title: "Step 3",
     heading: "Rolling",
     description: "The leaves are rolled to release enzymes and essential oils.",
-    img: "https://images.unsplash.com/photo-1433891248364-3ce993ff0e92?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // replace with your image path
+    img: "https://cdn-icons-png.flaticon.com/128/4864/4864869.png", // replace with your image path
   },
   {
     title: "Step 4",
     heading: "Fermentation",
     description: "The leaves are fermented to develop the flavor.",
-    img: "https://images.unsplash.com/photo-1627764611688-2d07255e995e?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // replace with your image path
+    img: "https://cdn-icons-png.flaticon.com/128/6542/6542823.png", // replace with your image path
   },
   {
     title: "Step 5",
     heading: "Drying",
     description: "The leaves are dried to stop the fermentation process.",
-    img: "https://media.istockphoto.com/id/1005801042/photo/tea-leaves-drying.jpg?s=1024x1024&w=is&k=20&c=BXQYTtee6MKzra3Mpv6MnjVm_ueOaMb4biPbqXdvIy4=", // replace with your image path
+    img: "https://cdn-icons-png.flaticon.com/128/2784/2784317.png", // replace with your image path
   },
   {
     title: "Step 6",
     heading: "Sorting and Packaging",
     description:
       "The final step involves sorting the leaves and packaging them for sale.",
-    img: "https://plus.unsplash.com/premium_photo-1681302765374-85a6681d634f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // replace with your image path
+    img: "https://cdn-icons-png.flaticon.com/128/5867/5867391.png", // replace with your image path
   },
 ];
 
@@ -86,64 +87,31 @@ const coffeeSteps = [
 ];
 
 const Timeline = () => {
-  const [activeTab, setActiveTab] = useState("tea");
-
-  const steps = activeTab === "tea" ? teaSteps : coffeeSteps;
-
   return (
     <div className="md:px-24 px-8 py-16">
-      <Tabs
-        className=" flex justify-center pb-12"
-        //@ts-ignore
-        onChange={(index) => setActiveTab(index === 0 ? "tea" : "coffee")}
-      >
-        <Tab title="Tea">
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-            {teaSteps.map((step, index) => (
-              <div key={index} className=" relative group">
-                <div className="flex flex-col items-center border  border-slate-200 p-3 h-44 rounded-md">
-                  <div className="relative h-20 w-20">
-                    <Image
-                      src={step.img}
-                      alt={step.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mt-4">{step.heading}</h3>
-                </div>
-                <div className="absolute inset-0 rounded-md  bg-black bg-opacity-70  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center ">
-                  <p className=" px-3">{step.description}</p>
-                </div>
+      <div className="text-3xl font-bold text-center mb-8">
+        <TextAnimation title="Tea and Coffee Processing" />
+      </div>
+      <div className=" grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-12">
+        {teaSteps?.map((item) => (
+          <motion.div
+            key={item.title}
+            className=" border border-slate-200 p-5 shadow-sm rounded"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
+          >
+            <div className="  space-y-2">
+              <div className=" flex justify-center items-center">
+                <Image src={item.img} alt="" width={50} height={50} />
               </div>
-            ))}
-          </div>
-        </Tab>
-        <Tab title="Coffee">
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-            {coffeeSteps.map((step, index) => (
-              <div key={index} className=" relative group">
-                <div className="flex flex-col items-center border bg-gradient-to-r from-[#26ae60] via-[#2ecc72] to-[#019031] animate-gradient border-slate-200 p-3 h-44 rounded-md">
-                  <div className="relative h-20 w-20">
-                    <Image
-                      src={step.img}
-                      alt={step.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mt-4">{step.heading}</h3>
-                </div>
-                <div className="absolute inset-0 rounded-md  bg-black bg-opacity-70  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center ">
-                  <p className=" px-3">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Tab>
-      </Tabs>
+              <h1 className=" text-xl font-exotwo font-semibold text-center text-[#00864a]">
+                {item.heading}
+              </h1>
+              <p className="font-exotwo text-slate-700">{item.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

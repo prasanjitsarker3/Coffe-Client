@@ -1,4 +1,5 @@
 "use client";
+import { ShowProductSkeleton } from "@/Components/ChartSkeleton/TotalSkeleton";
 import useAuthUser from "@/Components/Lib/authUser";
 import { useGetAllProductQuery } from "@/Components/Redux/AdminApi/TeaManament/teaManageApi";
 import {
@@ -59,7 +60,11 @@ const ProductAdd = () => {
   }, [items]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className=" pt-12">
+        <ShowProductSkeleton />
+      </div>
+    );
   }
 
   const products: Product[] = data.data.result;
@@ -126,15 +131,15 @@ const ProductAdd = () => {
       <div className="md:px-24 pt-20">
         <div>
           {!(!data || !items.length) ? (
-            <div className="flex justify-center w-full gap-12">
-              <div className="gap-5 w-[70%]">
+            <div className="flex flex-col md:flex-row justify-center w-full gap-12">
+              <div className=" md:w-[70%] w-full">
                 {reduxData.map((item) => (
                   <div key={item.id} className=" relative">
                     <div
                       // key={item.id}
                       className="flex items-center justify-around gap-3 py-3 w-full border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg"
                     >
-                      <div className="relative h-[100px] w-[200px]">
+                      <div className="relative md:h-[100px] h-[70px] w-[140px] md:w-[200px]">
                         <Image
                           src={item.image}
                           alt=""
@@ -149,7 +154,7 @@ const ProductAdd = () => {
                         <h1>Price: {item?.price}</h1>
                       </div>
                       <div className="space-y-3">
-                        <div className="flex items-center gap-6">
+                        <div className="flex items-center md:gap-6 gap-2">
                           <button
                             className=" bg-blue-600 rounded-full p-1 cursor-pointer text-white"
                             onClick={() => handleQuantityChange(item.id, -1)}
@@ -165,7 +170,7 @@ const ProductAdd = () => {
                             <Plus />
                           </button>
                         </div>
-                        <div className="w-40">
+                        <div className="md:w-40 w-24">
                           <Select
                             // defaultSelectedKeys={[item.size[0]]}
                             defaultSelectedKeys={item.size[0]}
@@ -204,7 +209,7 @@ const ProductAdd = () => {
                   </div>
                 ))}
               </div>
-              <div className="w-[30%] h-96 border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg">
+              <div className="md:w-[30%] w-full h-96 border-2 border-blue-500 m-3 p-4 rounded-lg bg-white shadow-lg">
                 <div className="space-y-3 text-gray-800">
                   <h1 className="text-xl font-semibold">Order Summary</h1>
                   <div className="flex justify-between">

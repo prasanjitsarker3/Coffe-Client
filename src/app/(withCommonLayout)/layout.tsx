@@ -1,3 +1,4 @@
+import Footer from "@/Components/Common/Footer";
 import NavbarSec from "@/Components/Common/Navbar";
 import { Metadata } from "next";
 import React from "react";
@@ -12,6 +13,7 @@ const CommonLayout = async ({ children }: { children: React.ReactNode }) => {
     <div>
       <NavbarSec />
       {children}
+      <Footer />
     </div>
   );
 };

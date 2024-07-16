@@ -47,7 +47,7 @@ const SideProductShow = () => {
                 className="rounded-lg transform transition-transform duration-500 group-hover:scale-110"
               />
             </div>
-            <h1 className=" -mt-8 pb-3 text-center text-white font-semibold z-50">
+            <h1 className=" absolute bottom-0 pb-5 text-center text-white font-semibold">
               {item.title}
             </h1>
           </div>
