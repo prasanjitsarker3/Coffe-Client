@@ -57,19 +57,6 @@ const NavbarSec = () => {
     };
   }, []);
 
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
-
   return (
     <div>
       <Navbar
@@ -82,7 +69,7 @@ const NavbarSec = () => {
         maxWidth="full"
       >
         <NavbarContent className="">
-          <NavbarBrand className="flex items-center">
+          <NavbarBrand className="flex items-center cursor-pointer">
             <Image
               src={"https://cdn-icons-png.flaticon.com/128/10021/10021745.png"}
               width={30}
