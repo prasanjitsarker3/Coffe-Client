@@ -8,63 +8,76 @@ Features, Technologies Used, Installation, Environment Variables, Project Struct
 
 # Features
 
-Product Management: Search, filter, and view products by category, top products, and similar products.
-Shopping Cart: Add multiple products to the cart.
-Checkout Process: Fill in login information, select payment option (cash or online), and complete the purchase.
-Payment Integration: Utilize SSL Commerce for online payments.
-Admin Dashboard: Manage and confirm orders, send order confirmation and delivery processing emails.
-User Dashboard: View and manage personal orders and provide feedback on products.
+- Product Management: Search, filter, and view products by category, top products, and similar products.
+- Shopping Cart: Add multiple products to the cart.
+- Checkout Process: Fill in login information, select payment option (cash or online), and complete the purchase.
+- Payment Integration: Utilize SSL Commerce for online payments.
+- Admin Dashboard: Manage and confirm orders, send order confirmation and delivery processing emails.
+- User Dashboard: View and manage personal orders and provide feedback on products.
 
 # Technologies Used
 
-Frontend Framework: Next.js
-State Management: Redux, Redux Persist
-UI Components: @nextui-org/react, Tailwind CSS
-Charts and Graphs: ApexCharts, React-ApexCharts
-Form Handling: React Hook Form, @hookform/resolvers
-Animations: Framer Motion
-Date Handling: Day.js
-Utilities: JWT Decode, Zod
-File Handling: Sharp
-PDF Generation: React-to-PDF
-Miscellaneous: React Player, Swiper, Sonner
+- Frontend Framework: Next.js
+- State Management: Redux, Redux Persist
+- UI Components: @nextui-org/react, Tailwind CSS
+- Charts and Graphs: ApexCharts, React-ApexCharts
+- Form Handling: React Hook Form, @hookform/resolvers
+- Animations: Framer Motion
+- Date Handling: Day.js
+- Utilities: JWT Decode, Zod
+- File Handling: Sharp
+- PDF Generation: React-to-PDF
+- Miscellaneous: React Player, Swiper, Sonner
 
 # Project Structure
 
-The project is structured as follows:
+`The project is structured as follows:
 /the-daily-cup
-/public
-/src
-/components
-/pages
-/styles
-/utils
-/hooks
+   /public
+   /src
+      /app
+      /pages
+      /layout
+      /styles
+    /components
+    /utils
+    /hooks
 .env
 package.json
 tsconfig.json
 README.md
-/components: Contains React components.
-/pages: Contains Next.js pages.
-/styles: Contains global and component-specific styles.
-/utils: Contains utility functions and constants.
+`
+
+- /components: Contains React components.
+- /pages: Contains Next.js pages.
+- /styles: Contains global and component-specific styles.
+- /utils: Contains utility functions and constants.
 
 # Installation
 
 Clone the repository:
-git clone https://github.com/yourusername/the-daily-cup.git
-cd the-daily-cup
+
+```js
+ git clone https://github.com/prasanjitsarker3/Coffe-Client
+ cd the-daily-cup
+
+```
 
 # Install dependencies:
 
-npm install
+```js
+   npm install
+```
 
 # Run the development server:
 
-npm run dev
+```js
+   npm run dev
+```
 
-Contributing
+# Contributing
+
 Contributions are welcome! Please fork the repository and submit a pull request for any features, enhancements, or bug fixes. For detailed information on how to contribute, please refer to the Contributing Guidelines.
 
-Github: https://github.com/prasanjitsarker3/Coffe-Client
-Live: https://tea-client.vercel.app
+- Github: `https://github.com/prasanjitsarker3/Coffe-Client`
+- Live: `https://tea-client.vercel.app`
