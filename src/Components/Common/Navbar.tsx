@@ -70,13 +70,17 @@ const NavbarSec = () => {
       >
         <NavbarContent className="">
           <NavbarBrand className="flex items-center cursor-pointer">
-            <Image
-              src={"https://cdn-icons-png.flaticon.com/128/10021/10021745.png"}
-              width={30}
-              height={30}
-              alt=""
-            />
-            <p className="font-bold text-inherit pt-1">The Daily Cup</p>
+            <Link href="/">
+              <Image
+                src={
+                  "https://cdn-icons-png.flaticon.com/128/10021/10021745.png"
+                }
+                width={30}
+                height={30}
+                alt=""
+              />
+              <p className="font-bold text-inherit pt-1">The Daily Cup</p>
+            </Link>
           </NavbarBrand>
         </NavbarContent>
 

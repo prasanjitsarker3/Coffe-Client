@@ -79,5 +79,5 @@ Clone the repository:
 
 Contributions are welcome! Please fork the repository and submit a pull request for any features, enhancements, or bug fixes. For detailed information on how to contribute, please refer to the Contributing Guidelines.
 
-- Github: `https://github.com/prasanjitsarker3/Coffe-Client`
-- Live: `https://tea-client.vercel.app`
+- Github: https://github.com/prasanjitsarker3/Coffe-Client
+- Live: https://tea-client.vercel.app
