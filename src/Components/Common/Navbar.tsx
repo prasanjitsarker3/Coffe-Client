@@ -70,7 +70,7 @@ const NavbarSec = () => {
       >
         <NavbarContent className="">
           <NavbarBrand className="flex items-center cursor-pointer">
-            <Link href="/">
+            <Link href="/" className="flex items-center cursor-pointer">
               <Image
                 src={
                   "https://cdn-icons-png.flaticon.com/128/10021/10021745.png"

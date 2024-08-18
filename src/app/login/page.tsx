@@ -65,7 +65,13 @@ const RegisterPage = () => {
           <h1 className="text-center text-2xl font-bold">Login In Here...</h1>
 
           <div>
-            <Input size="md" {...register("email")} label="Email" fullWidth />
+            <Input
+              size="md"
+              {...register("email")}
+              label="Email"
+              fullWidth
+              defaultValue="admin123@gmail.com"
+            />
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>
             )}
@@ -73,6 +79,7 @@ const RegisterPage = () => {
 
           <div className="relative">
             <Input
+              defaultValue="admin123"
               {...register("password")}
               size="md"
               type={show ? "text" : "password"}

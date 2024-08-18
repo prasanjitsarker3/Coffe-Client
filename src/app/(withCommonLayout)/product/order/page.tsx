@@ -199,19 +199,16 @@ const ProductOrderPage = () => {
                   >
                     Online Payment
                   </Button>
-                  <p
-                    className="text-yellow-500 bg-yellow-100 border border-yellow-400 rounded-lg px-4 py-3 relative"
-                    role="alert"
-                  >
-                    <span className="block sm:inline">
-                      After Online payment, the URL refreshes.
-                    </span>
-                    <span className="absolute top-0 right-0 border-l-4 border-yellow-500 text-yellow-600 p-2">
-                      Please note that SSL IPN URLs are not supported on Vercel
-                      deployments.
-                    </span>
-                  </p>
                 </ModalFooter>
+                <div className=" pb-4 px-6">
+                  <p className=" text-base text-yellow-600">
+                    After Online payment, the URL refreshes.
+                  </p>
+                  <p className=" text-sm text-yellow-500">
+                    Please note that SSL IPN URLs are not supported on Vercel
+                    deployments.
+                  </p>
+                </div>
               </>
             )}
           </ModalContent>
